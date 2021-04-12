@@ -3,8 +3,11 @@ import { useState } from "react"
 import { createContainer } from "unstated-next"
 
 const useTheme = () => {
-    const [isDark, setIsDark] = useState(true)
-    const toggleTheme = () => setIsDark(!isDark)
+    const [isDark, setIsDark] = useState(localStorage.getItem('ttgTheme') === "true")
+    const toggleTheme = () => {
+        setIsDark(!isDark)
+        localStorage.setItem('ttgTheme', !isDark)
+    }
 
     return {isDark, toggleTheme}
 }

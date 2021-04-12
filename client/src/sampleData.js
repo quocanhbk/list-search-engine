@@ -1,0 +1,25 @@
+const sampleData = [
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+    {code: "M04", workItem: "Some job needed to be done", assignedTo: "La Quoc Anh", duedate: "12/04/21", isOverdue: "Today", progress: "Not stated", category: "Design"},
+]
+
+export default sampleData
