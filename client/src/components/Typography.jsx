@@ -8,7 +8,6 @@ const generalStyle = props => `
     line-height: 1.2;
     color: ${props.theme.color.text[props.color] || props.theme.color.text.primary};
     text-align: ${props.textAlign || "left"};
-    margin-left: ${props.indentation ? props.indentation * 2 < 0 ? 0 : props.indentation * 2 : 0}rem;
     outline: none;
 `
 
