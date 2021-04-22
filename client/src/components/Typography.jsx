@@ -69,6 +69,18 @@ export const OL = styled.ol`
     font-weight: 400;
 `
 
-const Typography = {H1, H2, H3, H4, H5, H6, P, HL, UL, OL, LI}
+const BODY1 = styled.div`
+  color: ${(props) => props.theme.color.text[props.color] || props.theme.color.text.primary};
+  font-weight: ${(props) => props.weight ? props.weight : 'normal'};
+  font-size: 14px;
+`;
+
+const CAPTION = styled.div`
+  color: ${(props) => props.theme.color.text[props.color] || props.theme.color.text.primary};
+  font-weight: ${(props) => props.weight ? props.weight : 'normal'};
+  font-size: 12px
+`;
+
+const Typography = {H1, H2, H3, H4, H5, H6, P, HL, UL, OL, LI, BODY1, CAPTION}
 
 export default Typography
