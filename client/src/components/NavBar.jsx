@@ -7,12 +7,12 @@ import Divider from './Divider';
 import Typography from './Typography';
 
 // Hard Coded the background-color, not gonna bother with this thing
+// C'mon man!
 const NavBarWrapper = styled.div`
   width: 21.25vw;
   height: 100vh;
   color: ${(props) => props.theme.color.fill.secondary};
   background-color: #151516;
-  box-sizing: border-box;
   padding: 24px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.32);
 `;
@@ -57,7 +57,7 @@ const NavBar = () => {
       <Logo src={LogoGold} />
       <Divider />
       <UserDisplayCard>
-        <Avatar src="http://localhost:3600/api/v1/avatar/son.nk@ttgvn.com" />
+        <Avatar src="http://172.30.1.213:3600/api/v1/avatar/anh.lq@ttgvn.com" />
         <UserDisplayCardInfo>
           <Typography.BODY1 weight="600">Ngô Kim Sơn</Typography.BODY1>
           <Typography.CAPTION>son.nk@ttgvn.com</Typography.CAPTION>

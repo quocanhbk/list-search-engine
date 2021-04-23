@@ -1,10 +1,8 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import MainPage from './components/pages/MainPage';
-import MainPageV2 from './components/pages/MainPageV2';
 import theme from './utils/theme';
-import ThemeContext from './components/ThemeContext';
+import Context from './Context';
 
 const StyledApp = styled.div`
   background: ${(props) => props.theme.color.background.primary};
@@ -13,30 +11,21 @@ const StyledApp = styled.div`
   transition: background 0.25s ease-out;
 `;
 const Container = () => {
-  const themeContext = ThemeContext.useContainer();
+  const themeContext = Context.useContainer()
 
   return (
     <ThemeProvider theme={themeContext.isDark ? theme.dark : theme.light}>
-      <Router>
         <StyledApp>
-          <Switch>
-            <Route exact path='/'>
-              <MainPage />
-            </Route>
-            <Route path='/v1'>
-              <MainPageV2 />
-            </Route>
-          </Switch>
+            <MainPage/>
         </StyledApp>
-      </Router>
     </ThemeProvider>
   );
 };
 function App() {
   return (
-    <ThemeContext.Provider>
+    <Context.Provider>
       <Container />
-    </ThemeContext.Provider>
+    </Context.Provider>
   );
 }
 
