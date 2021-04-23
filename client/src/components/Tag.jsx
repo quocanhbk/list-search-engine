@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { BsX } from 'react-icons/bs';
 import styled from 'styled-components';
 import Typography from './Typography';
@@ -22,5 +23,9 @@ const Tag = ({ text }) => {
     </TagWrapper>
   );
 };
+
+Tag.propTypes = {
+  text: PropTypes.string,
+}
 
 export default Tag;

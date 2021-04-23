@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { BsThreeDotsVertical, BsHouse, BsSearch} from 'react-icons/bs';
 import LogoGold from '../assets/Logo_Gold.svg';

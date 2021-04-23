@@ -1,9 +1,11 @@
+import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import MainPage from './components/pages/MainPage';
 import MainPageV2 from './components/pages/MainPageV2';
 import theme from './utils/theme';
 import ThemeContext from './components/ThemeContext';
+
 const StyledApp = styled.div`
   background: ${(props) => props.theme.color.background.primary};
   height: 100vh;
