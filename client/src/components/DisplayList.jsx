@@ -1,6 +1,8 @@
 import React from 'react';
 import { BsFilterLeft, BsFunnel, BsSearch } from 'react-icons/bs';
 import styled from 'styled-components';
+import { format } from 'date-fns';
+import useGetAllTasks from '../hooks/taskServices/useGetAllTask';
 import Card from './Card';
 import Tag from './Tag';
 import Typography from './Typography';
@@ -95,6 +97,8 @@ const CardList = styled.div`
 `;
 
 const DisplayList = () => {
+  const [loading, tasks] = useGetAllTasks();
+  console.log(tasks);
   return (
     <DisplayListWrapper>
       <SearchAndFilter>
@@ -116,13 +120,17 @@ const DisplayList = () => {
           </IconWrapper>
         </IconWithText>
       </CountAndSort>
+      {loading && <div>Loading...</div>}
       <CardList>
-        <Card
-          title="Work item 1"
-          subtitle="04/23/2021"
-          description={<span style={{ color: 'red' }}>Overdue</span>}
-          tags={['Design','Construction']}
-        />
+        {tasks.map((task) => (
+          <Card
+            key={task.Id}
+            title={task.Title}
+            subtitle={format(new Date(task.DueDate), 'dd-MM-yyyy')}
+            description={<span style={{ color: 'red' }}>Overdue</span>}
+            tags={['Design', 'Construction']}
+          />
+        ))}
       </CardList>
     </DisplayListWrapper>
   );

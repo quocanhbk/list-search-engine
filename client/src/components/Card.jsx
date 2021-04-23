@@ -11,7 +11,8 @@ const CardWrapper = styled.div`
   align-items: center;
   box-sizing: border-box;
   border-radius: 8px;
-  background-color: ${(props) => props.selected ? 'rgba(165, 156, 135, 0.25)' : 'transparent'};
+  background-color: ${(props) =>
+    props.selected ? 'rgba(165, 156, 135, 0.25)' : 'transparent'};
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.32);
 `;
 
@@ -28,6 +29,8 @@ const InfoWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  max-width: 248px;
+  min-width: 248px;
   flex-grow: 2;
 `;
 
@@ -44,12 +47,17 @@ const Card = ({
   tags,
   selected = false,
 }) => {
+  const overflowStyle = {
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+  }
   return (
     <CardWrapper selected={selected}>
       <CardTopWrapper>
-        <Avatar src="http://localhost:3600/api/v1/avatar/son.nk@ttgvn.com" />
+        <Avatar src="http://172.30.1.213:3600/api/v1/avatar/son.nk@ttgvn.com" />
         <InfoWrapper>
-          <Typography.CAPTION>{title}</Typography.CAPTION>
+          <Typography.CAPTION style={overflowStyle}>{title}</Typography.CAPTION>
           <Typography.CAPTION>{subtitle}</Typography.CAPTION>
           {description && (
             <Typography.CAPTION>{description}</Typography.CAPTION>
