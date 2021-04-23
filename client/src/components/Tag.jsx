@@ -8,24 +8,26 @@ const TagWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   height: 24px;
-  background-color: #80766066;
+  background-color: transparent;
+  border: 1px solid ${(props) => props.theme.color.fill.primary};
   border-radius: 4px;
-  padding: 4px 0px 4px 8px;
+  padding: 4px 8px 4px 8px;
   margin: 0 8px 8px 0px;
   color: ${(props) => props.theme.color.fill.secondary};
 `;
 
-const Tag = ({ text }) => {
+const Tag = ({ text, display }) => {
   return (
     <TagWrapper>
       <Typography.CAPTION>{text}</Typography.CAPTION>
-      <BsX style={{marginLeft: '16px'}}/>
+      {!display && <BsX style={{marginLeft: '16px'}}/> }
     </TagWrapper>
   );
 };
 
 Tag.propTypes = {
   text: PropTypes.string,
+  display: PropTypes.boolean,
 }
 
 export default Tag;
