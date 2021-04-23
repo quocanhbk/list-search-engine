@@ -1,19 +1,29 @@
-import React from 'react'
+import React from 'react';
+import NavBar from '../NavBar';
+import SearchEnginePage from './SearchEnginePage';
 import styled from 'styled-components'
-import Body from '../Body'
-import Head from '../Head'
 
-const StyledPage = styled.div`
-    height: 100vh;
+const PageContainer = styled.div`
+    display: flex;
+`
+const NavBarContainer = styled.div`
+    flex: 2
+`
+const BodyContainer = styled.div`
+    flex: 10;
 `
 
 const MainPage = () => {
     return (
-        <StyledPage>
-            <Head/>
-            <Body/>
-        </StyledPage>
+        <PageContainer>
+            <NavBarContainer>
+                <NavBar/>
+            </NavBarContainer>
+            <BodyContainer>
+                <SearchEnginePage/>
+            </BodyContainer>
+        </PageContainer>
     )
 }
 
-export default MainPage
+export default MainPage;
