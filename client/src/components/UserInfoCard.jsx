@@ -26,7 +26,7 @@ const DateWrapper = styled.div`
   justify-content: space-between;
 `
 
-const UserInfoCard = ({ showOverdue }) => {
+const UserInfoCard = ({ showOverdue = false }) => {
   return (
     <UserInfoCardWrapper>
       <Avatar width='56px' height='56px' src="http://localhost:3600/api/v1/avatar/son.nk@ttgvn.com" />
@@ -43,7 +43,7 @@ const UserInfoCard = ({ showOverdue }) => {
 };
 
 UserInfoCard.propTypes = {
-  showOverdue: PropTypes.boolean,
+  showOverdue: PropTypes.bool,
   theme: PropTypes.any,
 }
 

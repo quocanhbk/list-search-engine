@@ -27,7 +27,7 @@ const Tag = ({ text, display }) => {
 
 Tag.propTypes = {
   text: PropTypes.string,
-  display: PropTypes.boolean,
+  display: PropTypes.bool,
 }
 
 export default Tag;

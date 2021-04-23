@@ -59,7 +59,7 @@ const TagsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 16px 0;
-`
+`;
 
 const Search = () => {
   return (
@@ -84,15 +84,15 @@ const CountAndSort = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`
+`;
 
 const IconWithText = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 const CardList = styled.div`
   width: 100%;
-`
+`;
 
 const DisplayList = () => {
   return (
@@ -111,11 +111,18 @@ const DisplayList = () => {
         <Typography.CAPTION>7 RESULTS</Typography.CAPTION>
         <IconWithText>
           <Typography.CAPTION>Sort By </Typography.CAPTION>
-          <IconWrapper><BsFilterLeft size="24px"/></IconWrapper>
+          <IconWrapper>
+            <BsFilterLeft size="24px" />
+          </IconWrapper>
         </IconWithText>
       </CountAndSort>
       <CardList>
-        <Card />
+        <Card
+          title="Work item 1"
+          subtitle="04/23/2021"
+          description={<span style={{ color: 'red' }}>Overdue</span>}
+          tags={['Design','Construction']}
+        />
       </CardList>
     </DisplayListWrapper>
   );
