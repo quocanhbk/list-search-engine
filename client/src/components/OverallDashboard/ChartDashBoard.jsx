@@ -3,22 +3,17 @@ import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 
 const Container = styled.div`
-  margin-top: 6%;
   width: 100%;
-`;
-const Header = styled.div`
-  text-transform: uppercase;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  line-height: 19px;
-  color: #807660;
 `;
 const Chart = styled.div`
     width: 100%;
     height: 200px;
 `;
-
+const StyleTitle = styled.div`
+    border-bottom: 1px solid;
+    font-size: 1rem;
+    text-transform: uppercase;
+`
 // data chartjs
 const rand = () => Math.floor(Math.random() * 255); // random data
 const genData = () => ({
@@ -27,7 +22,7 @@ const genData = () => ({
     {
       type: "line",
       label: "In progress",
-      borderColor: `#1E53BD`,
+      borderColor: `rgba(30, 83, 189, 1)`,
       borderWidth: 2,
       fill: false,
       data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
@@ -35,15 +30,13 @@ const genData = () => ({
     {
       type: "bar",
       label: "Complete",
-      backgroundColor: `#28A745`,
+      backgroundColor: `rgba(40, 167, 69, 0.5)`,
       data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
-      borderColor: "white",
-      borderWidth: 2,
     },
     {
         type: "line",
         label: "Overdue",
-        borderColor: `red`,
+        borderColor: `rgba(176, 0, 32, 1)`,
         borderWidth: 2,
         fill: false,
         data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
@@ -51,7 +44,7 @@ const genData = () => ({
       {
         type: "line",
         label: "Number of task",
-        borderColor: `#A59C87`,
+        borderColor: `rgba(165, 156, 135, 1)`,
         borderWidth: 2,
         fill: false,
         data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
@@ -79,9 +72,7 @@ function ChartDashBoard(props) {
 
   return (
     <Container {...props}>
-      <Header>
-        <h3>weekly record</h3>
-      </Header>
+      <StyleTitle>Weekly record</StyleTitle>
       <Chart>
         <Bar height="300px" data={data} options={options} />
       </Chart>
