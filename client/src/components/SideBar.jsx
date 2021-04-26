@@ -51,10 +51,13 @@ const UserDisplayCardInfo = styled.div`
 
 const NavItem = styled.div`
   padding: 1rem 2rem;
+  margin: 0 0.5rem;
+  border-radius: 1rem;
   display: flex;
   align-items: center;
   gap: 1rem;
   cursor: pointer;
+  transition: background 0.15s ease-in;
   &:hover{
     background-color: ${props => getFader(props.theme.color.border.primary, 0.5)};
   }
@@ -66,8 +69,6 @@ const NavItem = styled.div`
 
     }
   `}
-
-
 `;
 
 const NavList = styled.div`
@@ -75,6 +76,7 @@ const NavList = styled.div`
   flex-direction: column;
   margin-top: 1rem;
   color: ${props => props.theme.color.text.secondary};
+  gap: 0.5rem;
 `
 const Header = styled.div`
   display: flex;
