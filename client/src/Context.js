@@ -11,10 +11,14 @@ const useTheme = () => {
 
     return {isDark, toggleTheme}
 }
-
+const useSearch = () => {
+    const [search, setSearch] = useState("")
+    return {search, setSearch}
+}
 const useContext = () => {
     let themeContext = useTheme()
-    return {themeContext}
+    let searchContext = useSearch()
+    return {themeContext, searchContext}
 }
 
 const Context = createContainer(useContext)

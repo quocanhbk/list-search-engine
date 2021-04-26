@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import styled from 'styled-components'
 
@@ -44,10 +45,14 @@ const StyledInput = styled.input`
     width: 100%;
     
 `
-const Searchbar = () => {
+const Searchbar = ({search, setSearch}) => {
+    const handleChange = (e) => {
+        e.preventDefault()
+        setSearch(e.target.value)
+    }
     return (
         <StyledSearchbar>
-            <StyledInput type="text" placeholder="Search for something..."/>
+            <StyledInput value={search} onChange={handleChange} type="text" placeholder="Search for something..."/>
             <Icon/>
         </StyledSearchbar>
 

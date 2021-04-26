@@ -6,8 +6,10 @@ import Card from './NewCard';
 import Tag from '../Tag';
 import Searchbar from '../Searchbar'
 import { getFader } from '../../utils/color';
+import Context from '../../Context';
+
 const DisplayListWrapper = styled.div`
-  flex: 5;
+  flex: 8;
   background-color: ${(props) => props.theme.color.background.primary};
   color: ${(props) => props.theme.color.text.primary};
   display: flex;
@@ -79,11 +81,18 @@ const ListFooter = styled.div`
   padding: 0.5rem 0;
 `
 const DisplayList = () => {
+  const {searchContext} = Context.useContainer()
+  const searchData = () => {
+    return sampleData.filter(item => {
+      const itemString = item.AssignedTo.Title + " " + item.AssignedTo.EMail + " " + item.Title + item.Progress + item.Category + item.DueDate
+      return itemString.toLowerCase().includes(searchContext.search.toLowerCase())
+    })
+  }
   return (
     <DisplayListWrapper>
 
       <SearchAndFilter>
-        <Searchbar />
+        <Searchbar search={searchContext.search} setSearch={searchContext.setSearch}/>
         <IconWrapper>
           <BsFunnel size="20px" />
         </IconWrapper>
@@ -101,7 +110,7 @@ const DisplayList = () => {
       </TagBar>
 
       <CardList>
-        {sampleData.map((task) => (
+        {searchData().map((task) => (
           <Card
             key={task.Id}
             assignee={task.AssignedTo.Title}
