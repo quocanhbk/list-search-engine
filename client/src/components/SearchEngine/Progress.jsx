@@ -37,11 +37,12 @@ const Container = styled.div`
     display: flex;
     gap: 0.2rem;
     align-items: center;
+    cursor: pointer;
 `
 
-const Progress = ({progress}) => {
+const Progress = ({progress, onClick}) => {
     return (
-        <Container progress={progress}>
+        <Container progress={progress} onClick={onClick}>
             <ProgressIcon progress={progress}/>
             <p>{progress}</p>
         </Container>

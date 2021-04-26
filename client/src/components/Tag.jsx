@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const TagWrapper = styled.div`
@@ -7,19 +7,15 @@ const TagWrapper = styled.div`
   color: ${(props) => props.theme.color.text.primary};
   background: ${props => props.theme.color.border.primary};
   font-size: 0.8rem;
+  cursor: pointer;
 `;
 
-const Tag = ({ text }) => {
+const Tag = ({ text, onClick }) => {
   return (
-    <TagWrapper>
+    <TagWrapper onClick={onClick}>
       {text}
     </TagWrapper>
   );
 };
-
-Tag.propTypes = {
-  text: PropTypes.string,
-  display: PropTypes.bool,
-}
 
 export default Tag;

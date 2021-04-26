@@ -14,7 +14,7 @@ const SidebarContainer = styled.div`
   background-color: ${props => props.theme.color.background.secondary};
   padding-top: 0.5rem;
   box-shadow: ${props => props.theme.shadow};
-  flex: 4;
+  flex: 5;
   display: flex;
   flex-direction: column;
 `;
@@ -84,7 +84,7 @@ const Header = styled.div`
   justify-content: center;
   padding: 0 0.5rem;
   & h1 {
-    font-size: 1.2rem;
+    font-size: calc(1.0rem + .4vw);
     color: ${props => props.theme.color.fill.primary};
   }
 `

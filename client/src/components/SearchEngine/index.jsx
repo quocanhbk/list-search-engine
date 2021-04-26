@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from "styled-components"
 import List from "./List"
-import DisplayContent from "./DisplayContent"
+import Content from "./Content"
 
 const Container = styled.div`
     display: flex;
@@ -10,10 +10,24 @@ const Container = styled.div`
 ` 
 
 const SearchEnginePage = () => {
+    const [selectedId, setSelectedId] = useState()
+    const [selectedItem, setSelectedItem] = useState(null)
+    useEffect(() => {
+        if (selectedId) {
+            const getDetail = async () => {
+                fetch('http://172.30.1.213:3600/api/v1/tasks/' + selectedId, {method: 'GET'})
+                    .then((res) => res.json())
+                    .then((result) => setSelectedItem(result))
+                    .catch((err) => console.log(err));
+            }
+            getDetail()
+        }
+        
+    }, [selectedId])
     return (
         <Container>
-            <List />
-            <DisplayContent />
+            <List selectedId={selectedId} setSelectedId={setSelectedId} />
+            <Content item={selectedItem}/>
         </Container>
     )
 }

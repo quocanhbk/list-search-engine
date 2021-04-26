@@ -10,7 +10,7 @@ const PageContainer = styled.div`
 `
 
 const BodyContainer = styled.div`
-    flex: 16;
+    flex: 18;
     height: 100%;
     & .router {
         height: 100%;

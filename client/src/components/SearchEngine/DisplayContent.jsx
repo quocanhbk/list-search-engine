@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import {
   BsArchive,
@@ -9,26 +10,46 @@ import {
 } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Divider from '../Divider';
-import StatusTag from '../StatusTag';
 import Tag from '../Tag';
 import Typography from '../Typography';
 import UserInfoCard from '../UserInfoCard';
 import Avatar from '../Avatar';
+import { getFader } from '../../utils/color';
+import Progress from './Progress';
+import NoSelectionIndicator from './NoSelectionIndicator'
 
 const DisplayContentWrapper = styled.div`
   flex: 10;
-  min-height: 100vh;
-  background-color: #000000;
+  background-color: ${props => props.theme.color.background.secondary};
   color: ${(props) => props.theme.color.text.primary};
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.32);
-  box-sizing: border-box;
-  padding: 24px;
+  padding: 0.5rem;
+  border-left: 1px solid ${props => props.theme.color.border.primary};
+  overflow: overlay;
+  position: relative;
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${props => getFader(props.theme.color.fill.secondary, 0.5)};
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${props => props.theme.color.fill.secondary};
+  }
 `;
 
 const TaskTitleAnndStatus = styled.div`
   display: flex;
   justify-content: space-between;
+  padding: 0.5rem 0;
+  & .title {
+    font-size: 1.2rem;
+    color: ${props => props.theme.color.fill.primary};
+  }
+  border-bottom: 1px solid ${props => props.theme.color.border.primary};
 `;
 
 const TaskInfoHorizontal = styled.div`
@@ -95,19 +116,22 @@ const ObservatorsWrapper = styled.div`
   }
 `
 
-const DisplayContent = () => {
+const DisplayContent = ({item}) => {
   return (
     <DisplayContentWrapper>
+      {!item ? <NoSelectionIndicator/> : 
+      <>
       <TaskTitleAnndStatus>
-        <Typography.H4>Work Item 1</Typography.H4>
-        <StatusTag>In Progress</StatusTag>
+        <p className="title">{item.Title}</p>
+        <Progress progress={item.Progress}/>
       </TaskTitleAnndStatus>
-      <Divider />
+
       <TaskInfoHorizontal>
         <BsFolderPlus size="20px" />
         <Typography.CAPTION>TASKLIST</Typography.CAPTION>
         <Typography.CAPTION>M04 Lancaster Luminaire</Typography.CAPTION>
       </TaskInfoHorizontal>
+
       <TaskInfoHorizontal>
         <BsFillInboxFill size="20px" />
         <Typography.CAPTION>ID</Typography.CAPTION>
@@ -163,7 +187,8 @@ const DisplayContent = () => {
       <TaskLegend>
         <Typography.CAPTION>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</Typography.CAPTION>
       </TaskLegend>
-
+      </>
+    }
     </DisplayContentWrapper>
   );
 };

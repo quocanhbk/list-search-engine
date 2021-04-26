@@ -1,12 +1,13 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { BsFilterLeft, BsFunnel } from 'react-icons/bs';
 import styled from 'styled-components';
-import sampleData from '../../sampleData'
-import Card from './NewCard';
+import Card from './Card';
 import Tag from '../Tag';
-import Searchbar from '../Searchbar'
 import { getFader } from '../../utils/color';
 import Context from '../../Context';
+import useGetAllTasks from '../../hooks/taskServices/useGetAllTask';
+import ListLoader from './ListLoader';
+import ListToolbar from './ListToolbar';
 
 const DisplayListWrapper = styled.div`
   flex: 8;
@@ -18,26 +19,12 @@ const DisplayListWrapper = styled.div`
   padding: 0 0.5rem;
 `;
 
-const IconWrapper = styled.button`
-  color: ${(props) => props.theme.color.fill.primary};
-  background-color: ${props => props.theme.color.background.secondary};
-  border: 1px solid ${props => props.theme.color.border.primary};
-  height: 2.5rem;
-  padding: 0.5rem;
-  border-radius: 99px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
 
-  &:hover {
-    background: ${props => props.theme.color.border.primary};
-  }
-`;
 const TagBar = styled.div`
   display: flex;
   gap: 0.5rem;
-  padding: 0.5rem 0;
+  height: 2.5rem;
+  align-items: center;
 `;
 const TagContainer = styled.div`
   display: flex;
@@ -45,12 +32,7 @@ const TagContainer = styled.div`
   gap: 0.5rem;
 `;
 
-const SearchAndFilter = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 1rem 0 0.5rem;
-  gap: 0.5rem;
-`;
+
 
 const CardList = styled.div`
   width: 100%;
@@ -61,7 +43,7 @@ const CardList = styled.div`
   gap: 0.5rem;
   display: flex;
   flex-direction: column;
-
+  position: relative;
   ::-webkit-scrollbar {
     width: 0.5rem;
   }
@@ -76,54 +58,80 @@ const CardList = styled.div`
     background: ${props => props.theme.color.fill.secondary};
   }
 `;
+
 const ListFooter = styled.div`
   font-size: 0.8rem;
   padding: 0.5rem 0;
+  color: ${props => props.theme.color.text.secondary};
 `
-const DisplayList = () => {
-  const {searchContext} = Context.useContainer()
+const DisplayList = ({selectedId, setSelectedId}) => {
+  const {searchContext, filterContext} = Context.useContainer()
+  const {filter} = filterContext
+  let [loading, tasks] = useGetAllTasks()
+  console.log("Tasks:" ,tasks, "Loading: ", loading)
+  
+  const shapedData = tasks.map(item => {
+    let newCat = item.Category === null ? [] : item.Category
+    return {...item, Category: newCat}
+  })
   const searchData = () => {
-    return sampleData.filter(item => {
+    return shapedData.filter(item => {
       const itemString = item.AssignedTo.Title + " " + item.AssignedTo.EMail + " " + item.Title + item.Progress + item.Category + item.DueDate
       return itemString.toLowerCase().includes(searchContext.search.toLowerCase())
     })
   }
+  const processData = () => {
+    let filteredData = searchData().filter(item => 
+      (filter.assignee === null || filter.assignee === item.AssignedTo.Title) &&
+      (filter.progress === null || filter.progress === item.Progress) &&
+      (filter.dueDate === null || new Date(filter.dueDate).getTime() === new Date(item.DueDate).getTime()) &&
+      (filter.category.length === 0 || (item.Category.length > 0 && filter.category.every(cate => item.Category.includes(cate))))
+    )
+
+    return filteredData
+  }
+  const displayDate = (dateString) => {
+    let date = new Date(dateString)
+    return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
+  }
   return (
     <DisplayListWrapper>
-
-      <SearchAndFilter>
-        <Searchbar search={searchContext.search} setSearch={searchContext.setSearch}/>
-        <IconWrapper>
-          <BsFunnel size="20px" />
-        </IconWrapper>
-        <IconWrapper>
-          <BsFilterLeft size="20px" />
-        </IconWrapper>
-      </SearchAndFilter>
-
+      <ListToolbar/>
       <TagBar>
         <p>Filter: </p>
         <TagContainer>
-          <Tag text="M04" />
-          <Tag text="Ngo Kim Son" />
+          {
+          Object.entries(filter).filter(([key,item]) => key === "category" ? item.length > 0 : item !== null )
+            .map(([key,value]) => {
+              value = key === "dueDate" ? displayDate(value) : key === "category" ? value.join(", ") : value
+              return <Tag key={key} text={value} onClick={() => filterContext.removeFilter(key)}/>
+            })
+          }
         </TagContainer>
       </TagBar>
 
       <CardList>
-        {searchData().map((task) => (
-          <Card
-            key={task.Id}
-            assignee={task.AssignedTo.Title}
-            headline={task.Title}
-            progress={task.Progress}
-            category={task.Category}
-            dueDate={task.DueDate}
-            selected={false}
-          />
-        ))}
+        {loading? 
+          <ListLoader/> : 
+          <>
+          {processData().map((task) => (
+            <Card
+              key={task.Id}
+              assignee={task.AssignedTo.Title}
+              email={task.AssignedTo.EMail}
+              headline={task.Title}
+              progress={task.Progress}
+              category={task.Category}
+              dueDate={task.DueDate}
+              selected={selectedId === task.Id}
+              onClick={() => setSelectedId(task.Id)}
+            />
+          ))}
+          </>
+        }
       </CardList>
       <ListFooter>
-        Total <b>37</b> results
+        Total <b>{processData().length}</b> {processData().length > 1 ? "results" : "result"}
       </ListFooter>
     </DisplayListWrapper>
   );
