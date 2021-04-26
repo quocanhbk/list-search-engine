@@ -1,30 +1,29 @@
 import React from 'react';
 import styled from 'styled-components'
 import Typography from '../Typography';
-import DonutChart from './DonutChart';
 
 const StyleContainer = styled.div`
     flex: 1;
     background-color: #212223;
+    margin-top: 0.5rem;
     padding: 0.5rem;
 `
 const StyleTitle = styled.div`
     border-bottom: 1px solid;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 `
-CurrentPerformance.propTypes = {
+WeeklyTask.propTypes = {
     
 };
 
-function CurrentPerformance() {
+function WeeklyTask() {
     return (
         <StyleContainer>
             <StyleTitle>
-                <Typography.H6>Current Performance</Typography.H6>
+                <Typography.H6>Weekly Task</Typography.H6>
             </StyleTitle>
-            <DonutChart/>
         </StyleContainer>
     );
 }
 
-export default CurrentPerformance;
+export default WeeklyTask;
