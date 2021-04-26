@@ -1,30 +1,32 @@
 import React from 'react';
 import styled from 'styled-components'
 import Typography from '../Typography';
-import DonutChart from './DonutChart';
+import RadarChart from './RadaChart';
 
 const StyleContainer = styled.div`
-    flex: 1;
+    flex: 2;
     background-color: #212223;
     padding: 0.5rem;
+    margin-top: 0.5rem;
+
 `
 const StyleTitle = styled.div`
     border-bottom: 1px solid;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 `
-CurrentPerformance.propTypes = {
+CategoryPerformance.propTypes = {
     
 };
 
-function CurrentPerformance() {
+function CategoryPerformance() {
     return (
         <StyleContainer>
             <StyleTitle>
-                <Typography.H6>Current Performance</Typography.H6>
+                <Typography.H6>Category Performance</Typography.H6>
             </StyleTitle>
-            <DonutChart/>
+            <RadarChart/>
         </StyleContainer>
     );
 }
 
-export default CurrentPerformance;
+export default CategoryPerformance;
