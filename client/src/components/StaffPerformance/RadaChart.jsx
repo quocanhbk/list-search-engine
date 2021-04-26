@@ -8,26 +8,44 @@ const StyleContainer = styled.div`
 `
 
 const data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
+    labels: ['Strategy', 'Design', 'Construction', 'MEPF', 'Tender','Payment','Contract','Cost','Project Legal',
+            'Sales','Marketing','Report','Milestones','Plan'],
     datasets: [
-      {
-        data: [12, 19, 3, 5, 2],
-        backgroundColor: [
-          '#28A745',
-          '#174091',
-          '#FFC107',
-          '#B00020',
-          '#C4C4C4',
-        ],
-        borderWidth: 0,
-      },
+        {
+            label: 'Complete',
+            data: [2, 2, 3, 1, 2, 2, 2, 3, 1, 2, 2, 2, 3, 1],
+            backgroundColor: 'rgba(40, 167, 69, 0.5)',
+            borderColor: 'rgba(40, 167, 69, 1)',
+            borderWidth: 1,
+        },
+        {
+            label: 'Overdue',
+            data: [2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1],
+            backgroundColor: 'rgba(176, 0, 32, 1)',
+            borderColor: 'rgba(176, 0, 32, 1)',
+            borderWidth: 1,
+        },
+        {
+            label: 'Total task',
+            data: [5 ,6 ,4 ,4 ,3 ,5 ,7 ,8 ,3 ,4 ,5 ,5 ,6 ,4],
+            backgroundColor: 'rgba(165, 156, 135, 0.5)',
+            borderColor: 'rgba(165, 156, 135, 1)',
+            borderWidth: 1,
+        },
     ],
   };
 
 const options = {
-  scale: {
-    ticks: { beginAtZero: true },
-  },
+    scale: {
+        ticks: {
+           maxTicksLimit: 1,
+           beginAtZero: true
+        }
+    },
+    gridLines: {
+        display: false
+     },
+    reponsive: true
 };
 
 const RadarChart = () => {
