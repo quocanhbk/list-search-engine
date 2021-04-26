@@ -2,18 +2,16 @@ import React from 'react';
 import { BsFilterLeft, BsFunnel, BsSearch } from 'react-icons/bs';
 import styled from 'styled-components';
 import { format } from 'date-fns';
-import useGetAllTasks from '../hooks/taskServices/useGetAllTask';
+import useGetAllTasks from '../../hooks/taskServices/useGetAllTask';
 import Card from './Card';
-import Tag from './Tag';
-import Typography from './Typography';
+import Tag from '../Tag';
+import Typography from '../Typography';
 
 const DisplayListWrapper = styled.div`
-  width: 25vw;
-  min-height: 100vh;
+  flex: 4;
   background-color: ${(props) => props.theme.color.background.primary};
   color: ${(props) => props.theme.color.text.primary};
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.32);
-  box-sizing: border-box;
+  /* box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.32); */
   padding: 24px;
 `;
 

@@ -12,6 +12,11 @@ const useTheme = () => {
     return {isDark, toggleTheme}
 }
 
-const ThemeContext =  createContainer(useTheme)
+const useContext = () => {
+    let themeContext = useTheme()
+    return {themeContext}
+}
 
-export default ThemeContext
+const Context = createContainer(useContext)
+
+export default Context

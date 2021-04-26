@@ -9,15 +9,15 @@ import {
 } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Divider from '../../Divider';
-import StatusTag from '../../StatusTag';
-import Tag from '../../Tag';
-import Typography from '../../Typography';
-import UserInfoCard from '../../UserInfoCard';
-import Avatar from '../../Avatar';
+import Divider from '../Divider';
+import StatusTag from '../StatusTag';
+import Tag from '../Tag';
+import Typography from '../Typography';
+import UserInfoCard from '../UserInfoCard';
+import Avatar from '../Avatar';
 
 const DisplayContentWrapper = styled.div`
-  width: 51.25vw;
+  flex: 10;
   min-height: 100vh;
   background-color: #000000;
   color: ${(props) => props.theme.color.text.primary};

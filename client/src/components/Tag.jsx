@@ -1,26 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BsX } from 'react-icons/bs';
 import styled from 'styled-components';
-import Typography from './Typography';
 
 const TagWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 24px;
   background-color: transparent;
-  border: 1px solid ${(props) => props.theme.color.fill.primary};
-  border-radius: 4px;
-  padding: 4px 8px 4px 8px;
-  margin: 0 8px 8px 0px;
-  color: ${(props) => props.theme.color.fill.secondary};
+  padding: 0.2rem 0.5rem;
+  color: ${(props) => props.theme.color.text.primary};
+  background: ${props => props.theme.color.border.primary};
+  font-size: 0.8rem;
 `;
 
-const Tag = ({ text, display }) => {
+const Tag = ({ text }) => {
   return (
     <TagWrapper>
-      <Typography.CAPTION>{text}</Typography.CAPTION>
-      {!display && <BsX style={{marginLeft: '16px'}}/> }
+      {text}
     </TagWrapper>
   );
 };

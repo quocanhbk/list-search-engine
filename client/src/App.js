@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import MainPage from './components/pages/MainPage';
+import MainPage from './components/MainPage';
 import theme from './utils/theme';
 import Context from './Context';
 
@@ -11,7 +11,7 @@ const StyledApp = styled.div`
   transition: background 0.25s ease-out;
 `;
 const Container = () => {
-  const themeContext = Context.useContainer()
+  const {themeContext} = Context.useContainer()
 
   return (
     <ThemeProvider theme={themeContext.isDark ? theme.dark : theme.light}>
