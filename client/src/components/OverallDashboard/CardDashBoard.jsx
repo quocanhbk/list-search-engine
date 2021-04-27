@@ -14,12 +14,9 @@ const Container = styled.div`
 const Title = styled.h2`
   font-family: Roboto;
   font-size: 1.2rem;
-  font-style: normal;
   font-weight: 700;
-  line-height: 30px;
-  letter-spacing: 0em;
   text-align: left;
-  padding: 0 0 2% 0;
+  padding: 0.3rem 0;
   border-bottom: 1px solid #a59c87;
   color: ${(props) => props.theme.color.text.secondary};
 `;

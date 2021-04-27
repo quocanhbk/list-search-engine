@@ -4,18 +4,28 @@ import { Bar } from "react-chartjs-2";
 
 const Container = styled.div`
   width: 100%;
+  display:flex;
+  flex-direction: column;
+  height: 100%;
 `;
 const Chart = styled.div`
   width: 100%;
-  height: 200px;
+  display:flex;
+  align-items:center;
+  height: 50%;
+  padding: 0.5rem 0;
 `;
 const StyleTitle = styled.div`
     border-bottom: 1px solid;
+    font-family: Roboto;
+    font-style: normal;
     font-size: 1rem;
+    padding: 0.5rem 0;
+    font-weight: bold;
     text-transform: uppercase;
 `
 // data chartjs
-const rand = () => Math.floor(Math.random() * 255); // random data
+const rand = () => Math.floor(Math.random() * 50); // random data
 const genData = () => ({
   labels: ["Mon", "Tue", "Wed", "Fri", "Fri", "Thu", "Sun"],
   datasets: [
@@ -52,6 +62,15 @@ const genData = () => ({
   ],
 });
 const options = {
+  responsive: true,
+  maintainAspectRatio: true,
+  scale:{
+      ticks: {
+        maxTicksLimit: 10,
+        stepSize: 10,
+        beginAtZero: true,
+      },
+  },
   scales: {
     yAxes: [
       {
@@ -74,7 +93,7 @@ function ChartDashBoard(props) {
     <Container {...props}>
       <StyleTitle>Weekly record</StyleTitle>
       <Chart>
-        <Bar height="300px" data={data} options={options} />
+        <Bar height="250" data={data} options={options} />
       </Chart>
     </Container>
   );

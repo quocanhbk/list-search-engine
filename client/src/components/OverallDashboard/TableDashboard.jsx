@@ -9,12 +9,11 @@ const HeaderTable = styled.div`
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   color: #807660;
-  padding-top: 2%;
+  padding: 0.3rem 0;
   display: flex;
   justify-content: space-between;
 `;
