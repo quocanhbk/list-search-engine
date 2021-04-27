@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
+import List from './List'
+import DisplayContent from './DisplayContent'
 
 const Container = styled.div`
     height: 100%;
@@ -13,7 +15,8 @@ const StaffPerformancePage = () => {
     
     return (
         <Container>
-            Staffs Performance Page
+            <List />
+            <DisplayContent />
         </Container>
     )
 }

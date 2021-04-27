@@ -1,20 +1,22 @@
-import React from 'react'
-import styled from "styled-components"
+import React from "react";
+import styled from "styled-components";
+import ProjectList from "./ProjectList";
+
+
 
 const Container = styled.div`
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: ${props => props.theme.color.text.secondary};
-`
+  min-height: 100vh;
+  display: flex;
+  background-color: red;
+  color: ${(props) => props.theme.color.text.secondary};
+`;
 
 const OverallDashboardPage = () => {
-    return (
-        <Container>
-            Overall Dashboard Page
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <ProjectList/>
+    </Container>
+  );
+};
 
-export default OverallDashboardPage
+export default OverallDashboardPage;
