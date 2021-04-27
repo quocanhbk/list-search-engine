@@ -14,6 +14,13 @@ const StyleTitle = styled.div`
     text-transform: uppercase;
     font-size: 0.9rem;
 `
+const StyleTable =styled.div`
+    height: 90%;
+
+    & table{
+        height: 100%;
+    }
+`
 const dataRatio = [
     {
         id : 1,
@@ -61,24 +68,26 @@ function CurrentOverdueRatio() {
     return (
         <StyleContainer>
             <StyleTitle>Current Overdue Ratio</StyleTitle>
-            <Table>
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.HeaderCell textAlign="left" width="40%">Status</Table.HeaderCell>
-                      <Table.HeaderCell textAlign="center" width="30%">Overdue</Table.HeaderCell>
-                      <Table.HeaderCell textAlign="center" ># of Task</Table.HeaderCell>
-                    </Table.Row>
-                  </Table.Header>
-                  <Table.Body>
-                    {dataRatio.map(d => 
-                      <Table.Row key={d.id}>
-                        <Table.Cell textAlign="left">{d.status}</Table.Cell>
-                        <Table.Cell textAlign="center">{d.overdue}</Table.Cell>
-                        <Table.Cell textAlign="center">{d.task}</Table.Cell>
-                      </Table.Row>
-                      )}
-                  </Table.Body>
-                </Table>
+            <StyleTable>
+                <Table>
+                    <Table.Header>
+                        <Table.Row>
+                        <Table.HeaderCell textAlign="left" width="40%">Status</Table.HeaderCell>
+                        <Table.HeaderCell textAlign="center" width="30%">Overdue</Table.HeaderCell>
+                        <Table.HeaderCell textAlign="center" ># of Task</Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Header>
+                    <Table.Body>
+                        {dataRatio.map(d => 
+                        <Table.Row key={d.id}>
+                            <Table.Cell textAlign="left">{d.status}</Table.Cell>
+                            <Table.Cell textAlign="center">{d.overdue}</Table.Cell>
+                            <Table.Cell textAlign="center">{d.task}</Table.Cell>
+                        </Table.Row>
+                        )}
+                    </Table.Body>
+                    </Table>
+            </StyleTable>
         </StyleContainer>
     );
 }

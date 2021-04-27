@@ -82,28 +82,20 @@ const ContainerDonnut = styled.div`
   display:flex;
   align-items: center;
   padding: 0.3rem;
+  margin: 0.5rem;
 `;
 
 function MixChart() {
-    const [heightChart, setHeightChart] = useState(false)
     const [data, setData] = useState(genData());
     useEffect(() => {
       setData(genData());
     }, []);
 
-    useEffect(()=>{
-      let y = screen.height
-      let x = screen.width
-      if(x == 1920 && y == 1080){
-        setHeightChart(true)
-      }
-      console.log(heightChart)
-    },[])
 
     return (
         <StyleContainer>
             <ContainerDonnut>
-                <Bar height="200" data={data} options={options}/>
+                <Bar height="220" data={data} options={options}/>
             </ContainerDonnut>
         </StyleContainer>
     );

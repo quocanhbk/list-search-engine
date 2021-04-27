@@ -16,7 +16,7 @@ const Title = styled.h2`
   font-size: 1.2rem;
   font-weight: 700;
   text-align: left;
-  padding: 0.3rem 0;
+  padding: 1rem 0;
   border-bottom: 1px solid #a59c87;
   color: ${(props) => props.theme.color.text.secondary};
 `;

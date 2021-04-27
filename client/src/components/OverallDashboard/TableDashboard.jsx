@@ -4,6 +4,7 @@ import Table from "../Table";
 
 const Container = styled.div`
   width: 100%;
+  height: 30%;
 `;
 const HeaderTable = styled.div`
   font-family: Roboto;
@@ -13,7 +14,7 @@ const HeaderTable = styled.div`
   display: flex;
   align-items: center;
   color: #807660;
-  padding: 0.3rem 0;
+  padding: 1rem 0;
   display: flex;
   justify-content: space-between;
 `;
@@ -27,11 +28,11 @@ const Acomplishment = styled.div`
     text-align:right;
 
     &:first-child{
-      font-size: 0.65rem;
+      font-size: 0.7rem;
     }
 
     &:last-child{
-      font-size: 1rem;
+      font-size: 1.2rem;
       color: #fff;
     }
   }

@@ -6,14 +6,15 @@ const Container = styled.div`
   width: 100%;
   display:flex;
   flex-direction: column;
-  height: 100%;
+  height: 60%;
+  padding: 1rem 0;
+  margin-top: 1rem;
 `;
 const Chart = styled.div`
   width: 100%;
   display:flex;
-  align-items:center;
-  height: 50%;
-  padding: 0.5rem 0;
+  height: 90%;
+  padding: 1rem 0;
 `;
 const StyleTitle = styled.div`
     border-bottom: 1px solid;

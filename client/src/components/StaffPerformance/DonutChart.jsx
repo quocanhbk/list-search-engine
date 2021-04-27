@@ -41,7 +41,7 @@ const ContainerDonnut = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  flex: 2;
+  flex: 3;
   position: relative;
   padding: 0.3rem;
   align-items: center;
