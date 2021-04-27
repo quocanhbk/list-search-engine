@@ -10,14 +10,14 @@ const Chart = styled.div`
   height: 200px;
 `;
 const StyleTitle = styled.div`
-    border-bottom: 1px solid;
-    font-size: 1rem;
-    text-transform: uppercase;
-`
+  border-bottom: 1px solid;
+  font-size: 1rem;
+  text-transform: uppercase;
+`;
 // data chartjs
 const rand = () => Math.floor(Math.random() * 255); // random data
 const genData = () => ({
-  labels: ["Mon", "Tue", "Wed", "Fri", "Fri", "Thu", "Sun"],
+  labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
   datasets: [
     {
       type: "line",
@@ -52,6 +52,13 @@ const genData = () => ({
   ],
 });
 const options = {
+  legend: {
+    labels: {
+        fontColor: "red",
+        fontSize: 18,
+        fill: false
+    }
+  },
   scales: {
     yAxes: [
       {
