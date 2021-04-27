@@ -17,7 +17,7 @@ const Row = styled.tr`
     background: transparent;
     transition: all 150ms ease-in;
     padding: ${props => props.footer ? "0.5rem" : "0"};
-    font-size:0.85rem;
+    font-size:0.9rem;
 `;
 
 const HeaderCell = styled.th`
@@ -28,7 +28,7 @@ const HeaderCell = styled.th`
     border-bottom: 1px solid ${props => props.theme.color.border.primary};
     width: ${props => props.width || "auto"};
     text-align: ${props => props.textAlign || "center"};
-    font-size: 0.75rem;
+    font-size: 0.8rem;
 `;
 HeaderCell.propTypes = {
     width: PropTypes.string,

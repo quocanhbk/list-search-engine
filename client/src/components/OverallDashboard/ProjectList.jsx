@@ -3,7 +3,6 @@ import styled from "styled-components";
 import CardDashBoard from "./CardDashBoard";
 import TableDashboard from "./TableDashboard";
 import ChartDashBoard from "./ChartDashBoard";
-import Typography from "../Typography";
 
 const StyleContainer = styled.div`
   min-height: 100%;
@@ -20,6 +19,7 @@ const StyleTitle = styled.div`
 
 const ListContent = styled.div`
   display: flex;
+  padding: 0.5rem;
   gap: 0.5rem;
   flex: 9;
   justify-content: space-around;
@@ -32,9 +32,7 @@ const data = [1, 2, 3];
 function ProjectList() {
   return (
     <StyleContainer>
-      <StyleTitle>
-        <Typography.H5>Category Performance</Typography.H5>
-      </StyleTitle>
+      <StyleTitle>Category Performance</StyleTitle>
       <ListContent>
         {data.map((value) => {
           return (
