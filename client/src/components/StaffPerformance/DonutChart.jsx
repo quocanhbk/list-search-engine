@@ -33,13 +33,19 @@ const StyleContainer = styled.div`
     flex: 1;
     position: relative;
     display:flex;
+    height: 90%;
     padding: 1rem 0;
 `;
 
 const ContainerDonnut = styled.div`
-  flex: 1;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex: 2;
   position: relative;
   padding: 0.3rem;
+  align-items: center;
+  justify-content: center;
 `;
 
 const CountTask = styled.div`
