@@ -6,15 +6,12 @@ const Container = styled.div`
   width: 100%;
   display:flex;
   flex-direction: column;
-  height: 60%;
-  padding: 1rem 0;
-  margin-top: 1rem;
+  padding: 2% 0;
 `;
 const Chart = styled.div`
   width: 100%;
   display:flex;
-  height: 90%;
-  padding: 1rem 0;
+  padding: 10% 0;
 `;
 const StyleTitle = styled.div`
     border-bottom: 1px solid;
@@ -101,7 +98,7 @@ function ChartDashBoard(props) {
     <Container {...props}>
       <StyleTitle>Weekly record</StyleTitle>
       <Chart>
-        <Bar height="250" data={data} options={options} />
+        <Bar height="220" data={data} options={options} />
       </Chart>
     </Container>
   );
