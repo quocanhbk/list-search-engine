@@ -6,7 +6,7 @@ import ChartDashBoard from "./ChartDashBoard";
 
 const StyleContainer = styled.div`
   min-height: 100%;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.color.background.primary};
   color: ${(props) => props.theme.color.text.primary};
   padding: 0.5rem;
   display: flex;
