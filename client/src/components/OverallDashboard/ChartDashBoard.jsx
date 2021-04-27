@@ -15,8 +15,8 @@ const Header = styled.div`
   color: #807660;
 `;
 const Chart = styled.div`
-    width: 100%;
-    height: 200px;
+  width: 100%;
+  height: 200px;
 `;
 
 // data chartjs
@@ -41,21 +41,21 @@ const genData = () => ({
       borderWidth: 2,
     },
     {
-        type: "line",
-        label: "Overdue",
-        borderColor: `red`,
-        borderWidth: 2,
-        fill: false,
-        data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
-      },
-      {
-        type: "line",
-        label: "Number of task",
-        borderColor: `#A59C87`,
-        borderWidth: 2,
-        fill: false,
-        data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
-      },
+      type: "line",
+      label: "Overdue",
+      borderColor: `red`,
+      borderWidth: 2,
+      fill: false,
+      data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
+    },
+    {
+      type: "line",
+      label: "Number of task",
+      borderColor: `#A59C87`,
+      borderWidth: 2,
+      fill: false,
+      data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
+    },
   ],
 });
 const options = {
@@ -74,7 +74,7 @@ const options = {
 function ChartDashBoard(props) {
   const [data, setData] = useState(genData());
   useEffect(() => {
-    setData(genData())
+    setData(genData());
   }, []);
 
   return (
