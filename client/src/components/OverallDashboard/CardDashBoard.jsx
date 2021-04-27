@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { getFader } from "../../utils/color";
 import ChartDashBoard from "./ChartDashBoard";
 import TableDashboard from "./TableDashboard";
 
@@ -10,16 +11,15 @@ const Container = styled.div`
   border-radius: 0.5rem;
   border: 1px solid ${props => props.theme.color.border.primary};
   flex: 1;
-  padding: 0.5rem;
-
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 `;
 const Title = styled.h3`
   font-weight: 500;
   border-bottom: 1px solid ${props => props.theme.color.border.primary};
-  padding-bottom: 0.5rem;
+  padding: 0.5rem;
+  text-align: center;
+  background-color: ${props => getFader(props.theme.color.border.primary, 0.5)};
 `
 const CardDashBoard = (props) => {
   return (

@@ -6,11 +6,13 @@ import Typography from '../Typography'
 const StyleContainer = styled.div`
   height: 100%;
   background-color: ${(props) => props.theme.color.background.primary};
+  //background: red;
   color: ${(props) => props.theme.color.text.primary};
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: 100%;
 `;
 const StyleTitle = styled.div`
   border-bottom: 1px solid ${props => props.theme.color.border.primary};
@@ -23,7 +25,7 @@ const ListContent = styled.div`
   flex: 1;
   justify-content: space-around;
   width: 100%;
-  overflow: overlay;
+  overflow: hidden;
 `;
 
 const data = [1, 2, 3];

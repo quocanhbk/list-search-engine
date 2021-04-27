@@ -6,7 +6,6 @@ import ProjectList from "./ProjectList";
 
 const Container = styled.div`
   height: 100%;
-  background-color: red;
   color: ${(props) => props.theme.color.text.secondary};
 `;
 

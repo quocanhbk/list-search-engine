@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { getFader } from '../../utils/color';
-import Progress from './Progress';
+import Progress from '../Progress';
 import NoSelectionIndicator from './NoSelectionIndicator'
 import InfoContainer from './InfoContainer';
 import { BsFillStarFill } from 'react-icons/bs';

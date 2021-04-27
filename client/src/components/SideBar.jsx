@@ -62,7 +62,7 @@ const NavItem = styled.div`
     background-color: ${props => getFader(props.theme.color.border.primary, 0.5)};
   }
   ${props => props.active && css`
-    background: ${props => props.theme.color.border.primary};
+    background: ${props => getFader(props.theme.color.border.primary, 0.5)};
     color: ${props => props.theme.color.fill.primary};
     &:hover {
       background: ${props => props.theme.color.border.primary};

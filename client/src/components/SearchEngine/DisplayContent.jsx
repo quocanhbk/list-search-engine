@@ -15,7 +15,7 @@ import Typography from '../Typography';
 import UserInfoCard from '../UserInfoCard';
 import Avatar from '../Avatar';
 import { getFader } from '../../utils/color';
-import Progress from './Progress';
+import Progress from '../Progress';
 import NoSelectionIndicator from './NoSelectionIndicator'
 
 const DisplayContentWrapper = styled.div`

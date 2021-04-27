@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Table from "../Table";
-
+import Progress from '../Progress'
 const Container = styled.div`
   width: 100%;
-  height: 30%;
+  padding: 0.5rem;
 `;
 const HeaderTable = styled.div`
   font-size: 1rem;
@@ -14,14 +14,26 @@ const HeaderTable = styled.div`
   padding: 0.5rem 0;
   display: flex;
   justify-content: space-between;
+
 `;
 const CurrentStatus = styled.div`
-  text-transform: uppercase;
   font-size: 1rem;
+  font-weight: 700;
 `;
 const Acomplishment = styled.div`
-  
+  font-size: 0.8rem;
+  color: ${props => props.theme.color.text.secondary};
+  & b {
+    font-size: 1rem;
+    color: ${props => props.theme.color.text.info};
+  }
 `;
+const TableWrapper = styled.div`
+  background: ${props => props.theme.color.background.primary};
+  padding: 0.5rem;
+  border: 1px solid ${props => props.theme.color.border.primary};
+  border-radius: 0.5rem;
+`
 const dataRatio = [
   {
       id : 1,
@@ -69,24 +81,26 @@ const TableDashboard = (props) => {
           Accomplishment: <b>5/25 (20%)</b>
         </Acomplishment>
       </HeaderTable>
-      <Table>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell textAlign="left" width="40%">Status</Table.HeaderCell>
-            <Table.HeaderCell textAlign="center" width="30%">Overdue</Table.HeaderCell>
-            <Table.HeaderCell textAlign="center" ># of Task</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {dataRatio.map(d => 
-            <Table.Row key={d.id}>
-              <Table.Cell textAlign="left">{d.status}</Table.Cell>
-              <Table.Cell textAlign="center">{d.overdue}</Table.Cell>
-              <Table.Cell textAlign="center">{d.task}</Table.Cell>
+      <TableWrapper>
+        <Table>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell textAlign="left" width="40%">Status</Table.HeaderCell>
+              <Table.HeaderCell textAlign="center" width="30%">Overdue</Table.HeaderCell>
+              <Table.HeaderCell textAlign="center" ># of Task</Table.HeaderCell>
             </Table.Row>
-            )}
-        </Table.Body>
-      </Table>
+          </Table.Header>
+          <Table.Body>
+            {dataRatio.map(d => 
+              <Table.Row key={d.id}>
+                <Table.Cell textAlign="left"><Progress textOnly progress={d.status}/></Table.Cell>
+                <Table.Cell textAlign="center">{d.overdue}</Table.Cell>
+                <Table.Cell textAlign="center">{d.task}</Table.Cell>
+              </Table.Row>
+              )}
+          </Table.Body>
+        </Table>
+      </TableWrapper>
     </Container>
   );
 };

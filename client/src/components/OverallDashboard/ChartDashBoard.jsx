@@ -6,24 +6,20 @@ const Container = styled.div`
   width: 100%;
   display:flex;
   flex-direction: column;
-  height: 60%;
-  padding: 1rem 0;
-  margin-top: 1rem;
+  padding: 0.5rem;
+  flex: 1;
 `;
 const Chart = styled.div`
   width: 100%;
-  display:flex;
-  height: 90%;
-  padding: 1rem 0;
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid ${props => props.theme.color.border.primary};
+  border-radius: 0.5rem;
+  background: ${props => props.theme.color.background.primary};
 `;
 const StyleTitle = styled.div`
-    border-bottom: 1px solid;
-    font-family: Roboto;
-    font-style: normal;
-    font-size: 1rem;
     padding: 0.5rem 0;
-    font-weight: bold;
-    text-transform: uppercase;
+    font-weight: 700;
 `
 // data chartjs
 const rand = () => Math.floor(Math.random() * 50); // random data
@@ -33,15 +29,18 @@ const genData = () => ({
     {
       type: "line",
       label: "In progress",
-      borderColor: `rgba(30, 83, 189, 1)`,
+      borderColor: `#76D7EA`,
       borderWidth: 2,
       fill: false,
       data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
     },
     {
       type: "bar",
+      barThickness: 15,
+      borderRadius: 99,
       label: "Complete",
-      backgroundColor: `rgba(40, 167, 69, 0.5)`,
+      order: 1,
+      backgroundColor: `#56C26A`,
       data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
     },
     {
@@ -54,7 +53,7 @@ const genData = () => ({
     },
     {
       type: "line",
-      label: "Number of task",
+      label: "# of task",
       borderColor: `#A59C87`,
       borderWidth: 2,
       fill: false,
@@ -64,7 +63,7 @@ const genData = () => ({
 });
 const options = {
   responsive: true,
-  maintainAspectRatio: true,
+  maintainAspectRatio: false,
   scale:{
       ticks: {
         maxTicksLimit: 10,
@@ -72,12 +71,6 @@ const options = {
         beginAtZero: true,
       },
   },
-  legend: {
-    labels: {
-        fontColor: "red",
-        fontSize: 18,
-        fill: false
-    },
   scales: {
     yAxes: [
       {
@@ -87,7 +80,15 @@ const options = {
       },
     ],
   },
-}
+  plugins: {
+    legend: {
+      labels: {
+          color: "#eee",
+          boxWidth: 12,
+          padding: 10
+      }
+    },
+  }
 }
 
 // end data chartjs
@@ -99,9 +100,9 @@ function ChartDashBoard(props) {
 
   return (
     <Container {...props}>
-      <StyleTitle>Weekly record</StyleTitle>
+      <StyleTitle>Weekly Record</StyleTitle>
       <Chart>
-        <Bar height="250" data={data} options={options} />
+        <Bar data={data} options={options} />
       </Chart>
     </Container>
   );

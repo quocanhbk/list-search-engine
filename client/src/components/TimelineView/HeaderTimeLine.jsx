@@ -6,7 +6,6 @@ import Pagination from "@material-ui/lab/Pagination";
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 3% 2%;
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;

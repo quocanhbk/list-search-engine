@@ -41,9 +41,8 @@ const ContainerDonnut = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  flex: 3;
+  flex: 2;
   position: relative;
-  padding: 0.3rem;
   align-items: center;
   justify-content: center;
 `;
@@ -80,7 +79,6 @@ const Annotate = styled.div`
   display:flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0.3rem 0;
   padding-left: 0.5rem;
 `;
 
@@ -101,7 +99,7 @@ function DonutChart() {
               <Doughnut 
               data={data}
               options={options}
-              width = {200}
+              width = "100"
               />
               <CountTask>
                 <p>Number of Task</p>

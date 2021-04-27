@@ -5,7 +5,6 @@ import ContentTimeLine from "./ContentTimeLine";
 
 const Container = styled.div`
   height: 100%;
-  color: ${(props) => props.theme.color.text.secondary};
 `;
 
 const TimelineViewPage = () => {

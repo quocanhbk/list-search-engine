@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Avatar from '../Avatar';
 import Tag from '../Tag';
-import Progress from './Progress';
+import Progress from '../Progress';
 import DueDate from './DueDate';
 import Context from '../../Context';
 
