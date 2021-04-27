@@ -27,7 +27,7 @@ const StyleTitle = styled.div`
 // data chartjs
 const rand = () => Math.floor(Math.random() * 50); // random data
 const genData = () => ({
-  labels: ["Mon", "Tue", "Wed", "Fri", "Fri", "Thu", "Sun"],
+  labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
   datasets: [
     {
       type: "line",
@@ -71,6 +71,12 @@ const options = {
         beginAtZero: true,
       },
   },
+  legend: {
+    labels: {
+        fontColor: "red",
+        fontSize: 18,
+        fill: false
+    },
   scales: {
     yAxes: [
       {
@@ -80,7 +86,8 @@ const options = {
       },
     ],
   },
-};
+}
+}
 
 // end data chartjs
 function ChartDashBoard(props) {
