@@ -1,16 +1,18 @@
 import React from 'react';
 import styled from 'styled-components'
-import Typography from '../Typography';
 import Table from '../Table'
 
 const StyleContainer = styled.div`
-    flex: 1;
+    flex: 2;
     background-color: #212223;
     padding: 0.5rem;
 `
 const StyleTitle = styled.div`
     border-bottom: 1px solid;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
+    padding-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
 `
 const dataRatio = [
     {
@@ -58,9 +60,7 @@ CurrentOverdueRatio.propTypes = {
 function CurrentOverdueRatio() {
     return (
         <StyleContainer>
-            <StyleTitle>
-                <Typography.H6>Current Overdue Ratio</Typography.H6>
-            </StyleTitle>
+            <StyleTitle>Current Overdue Ratio</StyleTitle>
             <Table>
                   <Table.Header>
                     <Table.Row>

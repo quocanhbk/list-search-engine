@@ -7,8 +7,7 @@ const StyleContent =styled.div`
     flex: 1;
     display:flex;
     flex-direction: column;
-    margin-top: 0.5rem;
-    margin-left: 0.5rem;
+    margin-left : 0.5rem;
 `
 Content2.propTypes = {
     

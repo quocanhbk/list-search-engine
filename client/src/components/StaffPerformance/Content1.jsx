@@ -5,7 +5,6 @@ import WeeklyTask from './WeeklyTask';
 
 const StyleContent =styled.div`
     flex: 1;
-    margin-top: 0.5rem;
     display:flex;
     flex-direction: column;
 `

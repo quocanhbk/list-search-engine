@@ -33,12 +33,12 @@ const StyleContainer = styled.div`
     flex: 1;
     position: relative;
     display:flex;
+    padding: 1rem 0;
 `;
 
 const ContainerDonnut = styled.div`
   flex: 1;
   position: relative;
-
   padding: 0.3rem;
 `;
 
