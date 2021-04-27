@@ -7,14 +7,11 @@ const Container = styled.div`
   height: 30%;
 `;
 const HeaderTable = styled.div`
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
   font-size: 1rem;
   display: flex;
   align-items: center;
-  color: #807660;
-  padding: 1rem 0;
+  color: ${props => props.theme.color.text.primary};
+  padding: 0.5rem 0;
   display: flex;
   justify-content: space-between;
 `;
@@ -23,19 +20,7 @@ const CurrentStatus = styled.div`
   font-size: 1rem;
 `;
 const Acomplishment = styled.div`
-  & p{
-    
-    text-align:right;
-
-    &:first-child{
-      font-size: 0.7rem;
-    }
-
-    &:last-child{
-      font-size: 1.2rem;
-      color: #fff;
-    }
-  }
+  
 `;
 const dataRatio = [
   {
@@ -81,8 +66,7 @@ const TableDashboard = (props) => {
       <HeaderTable>
         <CurrentStatus>Current Status</CurrentStatus>
         <Acomplishment>
-          <p>Accomplishment</p>
-          <p>5/25 (20%)</p>
+          Accomplishment: <b>5/25 (20%)</b>
         </Acomplishment>
       </HeaderTable>
       <Table>

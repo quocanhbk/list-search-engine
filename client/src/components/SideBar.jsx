@@ -121,10 +121,10 @@ const SideBar = () => {
         <h1>Project Management Dashboard</h1>
       </Header>
       <UserDisplayCard>
-        <Avatar src="http://172.30.1.213:3600/api/v1/avatar/anh.lq@ttgvn.com" />
+        <Avatar src="/avatar.png" />
         <UserDisplayCardInfo>
-          <h3>Ngô Kim Sơn</h3>
-          <p>son.nk@ttgvn.com</p>
+          <h3>La Quốc Anh</h3>
+          <p>anh.lq@ttgvn.com</p>
         </UserDisplayCardInfo>
         <BsThreeDotsVertical size="20px"/>
       </UserDisplayCard>

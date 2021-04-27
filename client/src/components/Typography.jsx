@@ -3,7 +3,6 @@ import {getFader} from '../utils/color'
 
 const generalStyle = props => `
     margin-top: 0;
-    margin-bottom: 0.5rem;
     font-weight: 500;
     line-height: 1.2;
     color: ${props.theme.color.text[props.color] || props.theme.color.text.primary};

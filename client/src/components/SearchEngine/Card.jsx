@@ -1,16 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import Avatar from '../Avatar';
-import Typography from '../Typography';
-import StatusTag from '../StatusTag';
 import Tag from '../Tag';
 import Progress from './Progress';
 import DueDate from './DueDate';
 import Context from '../../Context';
-import { BsChevronRight } from 'react-icons/bs';
 
 const CardWrapper = styled.div`
     border: 1px solid ${props => props.theme.color.border.primary};
@@ -83,21 +79,6 @@ const Category = styled.div`
     flex: 1;
     align-items: center;
 `
-const ButtonZone = styled.div`
-    display: flex;
-    align-items: center;
-
-`
-const ChevronContainer = styled.div`
-    border: 1px solid ${props => props.theme.color.border.primary};
-    background: ${props => props.selected ? props.theme.color.fill.primary : props.theme.color.background.secondary };
-    color: ${props => props.selected ? props.theme.color.background.primary : 'inherit'};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-    border-radius: 99px;
-`
 const Card = ({assignee, email, headline, progress, category, dueDate, selected, onClick}) => {
     category = category === null ? [] : category
     const getName = () => {
@@ -106,11 +87,19 @@ const Card = ({assignee, email, headline, progress, category, dueDate, selected,
     }
     const {filterContext} = Context.useContainer()
 
+    const [avatar, setAvatar] = useState()
+    useEffect(() => {
+        const fetchAvatar = async () => {
+            fetch("http://172.30.1.213:3600/api/v1/avatar/" + email).then(result => setAvatar(result)).catch(() => setAvatar('/avatar.png'))
+        }
+        fetchAvatar()
+    })
+
     return (
         <CardWrapper selected={selected} onClick={onClick}>
             <UserZone onClick={(e) => {e.stopPropagation(); filterContext.addFilter("assignee", assignee)}}>
                 <div>
-                    <Avatar src={"http://172.30.1.213:3600/api/v1/avatar/" + email} width="40px" height="40px"/>
+                    <Avatar src={avatar} width="40px" height="40px"/>
                 </div>
                 <p>{getName()}</p>
             </UserZone>
