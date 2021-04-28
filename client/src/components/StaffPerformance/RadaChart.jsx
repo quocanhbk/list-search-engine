@@ -65,6 +65,15 @@ const options = {
     display: false,
   },
   reponsive: true,
+  plugins: {
+    legend: {
+      labels: {
+          color: "#eee",
+          boxWidth: 12,
+          padding: 10
+      }
+    },
+  }
 };
 
 const RadarChart = () => {

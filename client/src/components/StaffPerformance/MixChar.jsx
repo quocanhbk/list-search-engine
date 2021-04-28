@@ -41,32 +41,34 @@ const genData = () => ({
 });
 
 const options = {
-    responsive: true,
-    // maintainAspectRatio: true,
-    scale:{
+  responsive: true,
+  maintainAspectRatio: false,
+  scale:{
+      ticks: {
+        maxTicksLimit: 10,
+        stepSize: 10,
+        beginAtZero: true,
+      },
+  },
+  scales: {
+    yAxes: [
+      {
         ticks: {
-          maxTicksLimit: 10,
-          stepSize: 10,
           beginAtZero: true,
         },
-    },
+      },
+    ],
+  },
+  plugins: {
     legend: {
       labels: {
-          fontColor: "red",
-          fontSize: 18,
-          fill: false
-      },
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-          },
-        },
-      ],
+          color: "#eee",
+          boxWidth: 12,
+          padding: 10
+      }
     },
   }
-  }
+}
 
 const StyleContainer = styled.div`
     flex: 1;
