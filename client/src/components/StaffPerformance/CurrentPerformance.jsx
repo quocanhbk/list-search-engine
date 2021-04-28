@@ -4,7 +4,7 @@ import DonutChart from './DonutChart';
 
 const StyleContainer = styled.div`
     flex: 1;
-    background-color: #212223;
+    background-color: ${props => props.theme.color.background.secondary};
     padding: 0.5rem;
 `
 const StyleTitle = styled.div`

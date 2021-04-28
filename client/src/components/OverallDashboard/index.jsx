@@ -5,8 +5,7 @@ import ProjectList from "./ProjectList";
 
 
 const Container = styled.div`
-  min-height: 100vh;
-  display: flex;
+  height: 100%;
   color: ${(props) => props.theme.color.text.secondary};
 `;
 

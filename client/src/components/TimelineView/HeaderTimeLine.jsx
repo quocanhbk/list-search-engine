@@ -6,14 +6,13 @@ import Pagination from "@material-ui/lab/Pagination";
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 3% 2%;
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
   line-height: 28px;
   color: #a59c87;
-  border-bottom: 1px solid;
+  border-bottom : 1px solid ${props => props.theme.color.border.primary};
 `;
 const Title = styled.h3``;
 const RightContent = styled.div`
@@ -46,7 +45,7 @@ function HeaderTimeLine() {
       <Title>Timeline Schedule</Title>
       <RightContent className={classes.root}>
         <Pagination
-          count={3}
+          count={10}
           variant="outlined"
           color="secondary"
           size="large"
@@ -54,8 +53,6 @@ function HeaderTimeLine() {
           outline="none"
           classes={{
             ul: classes.ul,
-            selectIcon: classes.tablePaginationSelectIcon,
-            select: classes.tablePaginationSelectIcon,
           }}
         />
       </RightContent>

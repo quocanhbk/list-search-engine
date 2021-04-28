@@ -1,30 +1,31 @@
 import React from "react";
 import styled from "styled-components";
 import CardDashBoard from "./CardDashBoard";
-import TableDashboard from "./TableDashboard";
-import ChartDashBoard from "./ChartDashBoard";
+import Typography from '../Typography'
 
 const StyleContainer = styled.div`
-  min-height: 100%;
+  height: 100%;
   background-color: ${(props) => props.theme.color.background.primary};
+  //background: red;
   color: ${(props) => props.theme.color.text.primary};
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  gap: 0.5rem;
+  width: 100%;
 `;
 const StyleTitle = styled.div`
-  border-bottom: 1px solid;
+  border-bottom: 1px solid ${props => props.theme.color.border.primary};
+  padding: 0.5rem 0;
 `;
 
 const ListContent = styled.div`
   display: flex;
-  padding: 0.5rem;
   gap: 0.5rem;
-  flex: 9;
+  flex: 1;
   justify-content: space-around;
-  color: ${(props) => props.theme.color.text.secondary};
   width: 100%;
+  overflow: hidden;
 `;
 
 const data = [1, 2, 3];
@@ -32,15 +33,15 @@ const data = [1, 2, 3];
 function ProjectList() {
   return (
     <StyleContainer>
-      <StyleTitle>Category Performance</StyleTitle>
-      <ListContent>
+
+      <StyleTitle>
+        <Typography.H5>Overall Dashboard</Typography.H5>
+      </StyleTitle>
+
+      <ListContent className="list">
         {data.map((value) => {
           return (
-            <CardDashBoard key={value}>
-              <CardDashBoard.Title>M01 Lancaster Lincon</CardDashBoard.Title>
-              <TableDashboard />
-              <ChartDashBoard />
-            </CardDashBoard>
+            <CardDashBoard key={value}/>
           );
         })}
       </ListContent>

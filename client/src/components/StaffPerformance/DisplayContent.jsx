@@ -9,7 +9,7 @@ import Content2 from './Content2';
 const DisplayContentWrapper = styled.div`
   flex: 10;
   min-height: 100vh;
-  background-color: #000000;
+  background-color: ${(props) => props.theme.color.background.primary};
   color: ${(props) => props.theme.color.text.primary};
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.32);
   box-sizing: border-box;

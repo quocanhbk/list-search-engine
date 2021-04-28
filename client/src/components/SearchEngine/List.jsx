@@ -10,7 +10,7 @@ import ListLoader from './ListLoader';
 import ListToolbar from './ListToolbar';
 
 const DisplayListWrapper = styled.div`
-  flex: 8;
+  flex: 6;
   background-color: ${(props) => props.theme.color.background.primary};
   color: ${(props) => props.theme.color.text.primary};
   display: flex;

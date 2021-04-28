@@ -1,33 +1,9 @@
 import React from 'react';
 import {Doughnut} from 'react-chartjs-2'
 import styled from 'styled-components';
+import Context from '../../Context';
+import theme from '../../utils/theme'
 
-const data = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple'],
-  datasets: [
-    {
-      data: [12, 19, 3, 5, 2],
-      backgroundColor: [
-        '#28A745',
-        '#174091',
-        '#FFC107',
-        '#B00020',
-        '#C4C4C4',
-      ],
-      borderWidth: 0,
-    },
-  ],
-};
-
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: false
-      },
-      
-    },
-  };
 
 const StyleContainer = styled.div`
     flex: 1;
@@ -59,20 +35,15 @@ const CountTask = styled.div`
 
     &:first-child{
       font-size: 0.7rem;
+      color: ${props => props.theme.color.text.secondary};
     }
     
     &:last-child{
-      
+      color: ${props => props.theme.color.text.primary};
     }
   }
 `;
 
-//font text color donut chart
-const color = []
-
-data.datasets[0].backgroundColor.map((value) =>{
-  color.push(value)
-}) 
 
 const Annotate = styled.div`
   flex: 1;
@@ -89,10 +60,52 @@ const AnnotateItem = styled.div`
 
     &:first-child{
       font-size: 0.7rem;
+      color: ${props => props.theme.color.text.primary};
     }
   }
 `
+
+
+
 function DonutChart() {
+  const {themeContext} = Context.useContainer()
+  const currentTheme = themeContext.isDark ? theme.dark : theme.light
+  const data = {
+    labels: ['Completed', 'In Progress', 'Pending', 'Blocked', 'Behind'],
+    datasets: [
+      {
+        data: [12, 19, 3, 5, 2],
+        backgroundColor: [
+          currentTheme.color.fill.success,
+          currentTheme.color.fill.info,
+          currentTheme.color.fill.warning,
+          currentTheme.color.fill.danger,
+          currentTheme.color.text.secondary,
+        ],
+        borderWidth: 0,
+        
+      },
+    ],
+  };
+  
+  //font text color donut chart
+  const color = []
+  
+  data.datasets[0].backgroundColor.map((value) =>{
+    color.push(value)
+  }) 
+  
+    const options = {
+      responsive: true,
+      cutoutPercentage: 50,
+      maintainAspectRatio: true,
+      plugins: {
+        legend: {
+          display: false
+        },
+        
+      },
+    };
     return (
         <StyleContainer>
             <ContainerDonnut>
@@ -100,6 +113,7 @@ function DonutChart() {
               data={data}
               options={options}
               width = "100"
+              cutoutPercentage={10}
               />
               <CountTask>
                 <p>Number of Task</p>
@@ -108,23 +122,23 @@ function DonutChart() {
             </ContainerDonnut>
             <Annotate>
               <AnnotateItem>
-                <p>Complete</p>
+                <p>Completed</p>
                 <p style={{color: color[0]}}>10(20%)</p>
               </AnnotateItem>
               <AnnotateItem>
-                <p>Block</p>
+                <p>In Progress</p>
                 <p style={{color: color[1]}}>10(20%)</p>
               </AnnotateItem>
               <AnnotateItem>
-                <p>InProcess</p>
+                <p>Pending</p>
                 <p style={{color: color[2]}}>10(20%)</p>
               </AnnotateItem>
               <AnnotateItem>
-                <p>Complete</p>
+                <p>Blocked</p>
                 <p style={{color: color[3]}}>10(20%)</p>
               </AnnotateItem>
               <AnnotateItem>
-                <p>Complete</p>
+                <p>Behind</p>
                 <p style={{color: color[4]}}>10(20%)</p>
               </AnnotateItem>
             </Annotate>
