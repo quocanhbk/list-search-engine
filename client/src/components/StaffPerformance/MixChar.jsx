@@ -1,74 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import {Bar} from 'react-chartjs-2'
 import styled from 'styled-components';
+import Context from '../../Context';
+import theme from '../../utils/theme';
 
 const rand = () => Math.floor(Math.random() * 50); // random data
 
-const genData = () => ({
-  labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-  datasets: [
-    {
-      type: "line",
-      label: "In progress",
-      borderColor: `rgba(30, 83, 189, 1)`,
-      borderWidth: 2,
-      fill: false,
-      data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
-    },
-    {
-      type: "bar",
-      label: "Complete",
-      backgroundColor: `rgba(40, 167, 69, 0.5)`,
-      data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
-    },
-    {
-      type: "line",
-      label: "Overdue",
-      borderColor: `red`,
-      borderWidth: 2,
-      fill: false,
-      data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
-    },
-    {
-      type: "line",
-      label: "Number of task",
-      borderColor: `#A59C87`,
-      borderWidth: 2,
-      fill: false,
-      data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
-    },
-  ],
-});
 
-const options = {
-  responsive: true,
-  maintainAspectRatio: false,
-  scale:{
-      ticks: {
-        maxTicksLimit: 10,
-        stepSize: 10,
-        beginAtZero: true,
-      },
-  },
-  scales: {
-    yAxes: [
-      {
-        ticks: {
-          beginAtZero: true,
-        },
-      },
-    ],
-  },
-  plugins: {
-    legend: {
-      labels: {
-          color: "#eee",
-          boxWidth: 12,
-          padding: 10
-      }
-    },
-  }
-}
 
 const StyleContainer = styled.div`
     flex: 1;
@@ -88,9 +26,82 @@ const ContainerDonnut = styled.div`
 `;
 
 function MixChart() {
-    const [data, setData] = useState(genData());
+    const {themeContext} = Context.useContainer()
+    const currentTheme = themeContext.isDark ? theme.dark : theme.light
+
+
+    const getData = () => ({
+      labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      datasets: [
+        {
+          type: "line",
+          label: "In progress",
+          borderColor: `#76D7EA`,
+          borderWidth: 2,
+          fill: false,
+          data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
+        },
+        {
+          type: "bar",
+          barThickness: 15,
+          borderRadius: 99,
+          label: "Complete",
+          order: 1,
+          backgroundColor: `#56C26A`,
+          data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
+        },
+        {
+          type: "line",
+          label: "Overdue",
+          borderColor: `red`,
+          borderWidth: 2,
+          fill: false,
+          data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
+        },
+        {
+          type: "line",
+          label: "# of task",
+          borderColor: `#A59C87`,
+          borderWidth: 2,
+          fill: false,
+          data: [rand(), rand(), rand(), rand(), rand(), rand(), rand()],
+        },
+      ],
+    });
+    
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      scale:{
+          ticks: {
+            maxTicksLimit: 10,
+            stepSize: 10,
+            beginAtZero: true,
+          },
+      },
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
+          },
+        ],
+      },
+      plugins: {
+        legend: {
+          labels: {
+              color: currentTheme.color.text.secondary,
+              boxWidth: 12,
+              padding: 10
+          }
+        },
+      }
+    }
+    const [data, setData] = useState(getData());
+
     useEffect(() => {
-      setData(genData());
+      setData(getData());
     }, []);
 
 
