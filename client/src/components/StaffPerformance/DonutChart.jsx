@@ -80,7 +80,7 @@ function DonutChart() {
           currentTheme.color.fill.info,
           currentTheme.color.fill.warning,
           currentTheme.color.fill.danger,
-          currentTheme.color.fill.secondary,
+          currentTheme.color.text.secondary,
         ],
         borderWidth: 0,
         

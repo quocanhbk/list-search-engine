@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
+import Progress from '../Progress';
 import Table from '../Table'
 
 const StyleContainer = styled.div`
@@ -19,6 +20,9 @@ const StyleTable =styled.div`
 
     & table{
         height: 100%;
+    }
+    & .cell {
+        font-size: 0.8rem;
     }
 `
 const dataRatio = [
@@ -69,24 +73,24 @@ function CurrentOverdueRatio() {
         <StyleContainer>
             <StyleTitle>Current Overdue Ratio</StyleTitle>
             <StyleTable>
-                <Table>
-                    <Table.Header>
-                        <Table.Row>
-                        <Table.HeaderCell textAlign="left" width="40%">Status</Table.HeaderCell>
-                        <Table.HeaderCell textAlign="center" width="30%">Overdue</Table.HeaderCell>
-                        <Table.HeaderCell textAlign="center" ># of Task</Table.HeaderCell>
-                        </Table.Row>
-                    </Table.Header>
-                    <Table.Body>
-                        {dataRatio.map(d => 
-                        <Table.Row key={d.id}>
-                            <Table.Cell textAlign="left">{d.status}</Table.Cell>
-                            <Table.Cell textAlign="center">{d.overdue}</Table.Cell>
-                            <Table.Cell textAlign="center">{d.task}</Table.Cell>
-                        </Table.Row>
-                        )}
-                    </Table.Body>
-                    </Table>
+            <Table>
+                <Table.Header>
+                    <Table.Row>
+                    <Table.HeaderCell textAlign="left" width="40%">Status</Table.HeaderCell>
+                    <Table.HeaderCell textAlign="center" width="30%">Overdue</Table.HeaderCell>
+                    <Table.HeaderCell textAlign="center" ># of Task</Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                    {dataRatio.map(d => 
+                    <Table.Row key={d.id}>
+                        <Table.Cell className="cell" textAlign="left"><Progress textOnly progress={d.status}/></Table.Cell>
+                        <Table.Cell className="cell" textAlign="center">{d.overdue}</Table.Cell>
+                        <Table.Cell className="cell" textAlign="center">{d.task}</Table.Cell>
+                    </Table.Row>
+                    )}
+                </Table.Body>
+            </Table>
             </StyleTable>
         </StyleContainer>
     );
