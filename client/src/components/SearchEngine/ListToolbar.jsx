@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsFilterLeft, BsFunnel } from 'react-icons/bs';
 import Searchbar from '../Searchbar'
 import styled from 'styled-components'
@@ -41,34 +41,34 @@ const SearchAndFilter = styled.div`
 `;
 const ListToolbar = () => {
     const {searchContext} = Context.useContainer()
-    const [popup, setPopup] = useState(false)
-    const [popupType, setPopupType] = useState("")
-    const ref1 = useClickOutside(() => setPopup(false))
-    const ref2 = useClickOutside(() => setPopup(false))
+    const [filterPopup, setFilterPopup] = useState(false)
+    const [sortPopup, setSortPopup] = useState(false)
+    const ref1 = useClickOutside(() => {setFilterPopup(false);console.log("1")})
+    const ref2 = useClickOutside(() => {setSortPopup(false);console.log("2")})
 
     const handlePopup = (e, type) => {
         e.preventDefault()
         console.log("Boom")
-        if (!popup) {
-            setPopup(true)
-            setPopupType(type)
-        }
-        else if (popup && popupType !== type)
-            setPopupType(type)
-        else 
-            setPopup(false)
+        if (type === "filter") {
+            setFilterPopup(!filterPopup)
+        } else setSortPopup(!sortPopup)
     }
-
+    useEffect(() => {
+        if (filterPopup)
+            setSortPopup(false)
+        if (sortPopup)
+            setFilterPopup(false)
+    })
     return (
         <SearchAndFilter>
             <Searchbar search={searchContext.search} setSearch={searchContext.setSearch}/>
             <IconWrapper ref={ref1}>
                 <BsFunnel size="20px" onClick={(e) => handlePopup(e, "filter")}/>
-                {(popup && popupType === "filter") && <PopupWrapper>Filter</PopupWrapper>}
+                {filterPopup && <PopupWrapper>Filter</PopupWrapper>}
             </IconWrapper>
             <IconWrapper ref={ref2}>
                 <BsFilterLeft size="20px" onClick={(e) => handlePopup(e, "sort")}/>
-                {(popup && popupType === "sort") && <PopupWrapper>Sort</PopupWrapper>}
+                {sortPopup && <PopupWrapper>Sort</PopupWrapper>}
             </IconWrapper>
         </SearchAndFilter>
     )

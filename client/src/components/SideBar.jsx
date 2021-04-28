@@ -7,6 +7,7 @@ import ThemeToggle from './ThemeToggle'
 import pageList from '../pageList'
 import { navigate } from '@reach/router';
 import { getFader } from '../utils/color';
+import useAvatar from '../hooks/useAvatar';
 
 // Hard Coded the background-color, not gonna bother with this thing
 // C'mon man!
@@ -111,7 +112,7 @@ const Footer = styled.div`
   }
 `
 const SideBar = () => {
-
+  const avatar = useAvatar("anh.lq@ttgvn.com")
   const {themeContext} = Context.useContainer()
   const [pathname, setPathname] = useState(location.pathname)
   return (
@@ -121,7 +122,7 @@ const SideBar = () => {
         <h1>Project Management Dashboard</h1>
       </Header>
       <UserDisplayCard>
-        <Avatar src="/avatar.png" />
+        <Avatar src={avatar} />
         <UserDisplayCardInfo>
           <h3>La Quốc Anh</h3>
           <p>anh.lq@ttgvn.com</p>
