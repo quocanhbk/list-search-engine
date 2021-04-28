@@ -20,12 +20,15 @@ const Title = styled.div`
     color: #807660;
 `;
 function ChooseDate() {
+    const handleGetDate = (value) => {
+        console.log(value)
+    }
     return (
         <Container>
             <Title>
                 Work Item
             </Title>
-            <PaginationDate/>
+            <PaginationDate handleGetDate={handleGetDate}/>
         </Container>
     );
 }

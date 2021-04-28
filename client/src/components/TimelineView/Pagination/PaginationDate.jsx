@@ -75,6 +75,7 @@ function PaginationDate() {
   };
   const handleChooseDate = (value) => {
     setToday(value.tomorrow);
+    // handleGetDate(today)
   };
   return (
     <Container>
