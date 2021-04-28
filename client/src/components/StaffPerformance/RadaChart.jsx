@@ -57,6 +57,11 @@ const RadarChart = () => {
   };
   
    const RadarOptions = {
+    elements: {
+      point:{
+          radius: 0
+      }
+    },
     scale: {
       angleLines:{
         lineWidth: 5
