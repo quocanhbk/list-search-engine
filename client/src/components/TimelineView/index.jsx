@@ -11,10 +11,10 @@ const Container = styled.div`
 const TimelineViewPage = () => {
   return (
     <Container>
-        <HeaderTimeLine/>
-        <ChooseDate/>
+      <HeaderTimeLine />
+      <ChooseDate />
     </Container>
-  )
+  );
 };
 
 export default TimelineViewPage;

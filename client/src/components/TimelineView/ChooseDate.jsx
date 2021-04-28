@@ -5,9 +5,10 @@ import PaginationDate from './Pagination/PaginationDate';
 const Container = styled.div`
     display: flex;
     width: 100%;
+    border-bottom: 1px solid #a59c87;
 `;
 const Title = styled.div`
-    width: 20%;
+    width: 15%;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;

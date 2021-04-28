@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 80%;
+  width: 85%;
   text-align: right;
 `;
 const Ul = styled.ul`
@@ -10,9 +10,7 @@ const Ul = styled.ul`
   flex-wrap: wrap;
   color: #807660;
   align-items: center;
-  position: absolute;
   right: 0;
-  width: 55%;
   i {
     font-size: 50px;
   }
@@ -30,6 +28,7 @@ const Li = styled.li`
   padding: 0% 2%;
   text-align: center;
   list-style: none;
+  cursor: pointer;
 `;
 function PaginationDate() {
   const [date_temp, setDateTemp] = useState([]);
@@ -37,7 +36,7 @@ function PaginationDate() {
 
   const RenderDate = () => {
     let list_date = [];
-    for (let i = -5; i < 6; i++) {
+    for (let i = -6; i < 7; i++) {
       let tomorrow = new Date(
         today.getFullYear(),
         today.getMonth(),
