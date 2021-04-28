@@ -8,7 +8,7 @@ const useGetAllTasks = () => {
       method: 'GET',
       
     };
-    fetch('http://172.30.1.213:3600/api/v1/tasks', options)
+    fetch('http://172.30.1.213:3600/api/v1/tasks/m04', options)
       .then((res) => res.json())
       .then((result) => {
         setTasks(result);
