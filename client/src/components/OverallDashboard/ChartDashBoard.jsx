@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import theme from "../../utils/theme";
 import Context from "../../Context";
+import PaginationDate from "./PaginationDate";
 
 const Container = styled.div`
   width: 100%;
@@ -19,6 +20,11 @@ const Chart = styled.div`
   border-radius: 0.5rem;
   background: ${props => props.theme.color.background.primary};
 `;
+const StyleHeader = styled.div`
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+`
 const StyleTitle = styled.div`
     padding: 0.5rem 0;
     font-weight: 700;
@@ -107,7 +113,10 @@ function ChartDashBoard(props) {
 
   return (
     <Container {...props}>
-      <StyleTitle>Weekly Record</StyleTitle>
+      <StyleHeader>
+        <StyleTitle>Weekly Record</StyleTitle>
+        <PaginationDate/>
+      </StyleHeader>
       <Chart>
         <Bar data={data} options={options} />
       </Chart>
