@@ -4,7 +4,7 @@ import Table from '../Table'
 
 const StyleContainer = styled.div`
     flex: 2;
-    background-color: #212223;
+    background-color: ${props => props.theme.color.background.secondary};
     padding: 0.5rem;
 `
 const StyleTitle = styled.div`
