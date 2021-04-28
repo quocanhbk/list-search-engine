@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import HeaderTimeLine from "./HeaderTimeLine";
 import ChooseDate from "./ChooseDate";
+import ContentTimeLine from './ContentTimeLine';
 
 const Container = styled.div`
   height: 100%;
@@ -13,6 +14,7 @@ const TimelineViewPage = () => {
     <Container>
       <HeaderTimeLine />
       <ChooseDate />
+      <ContentTimeLine />
     </Container>
   );
 };
