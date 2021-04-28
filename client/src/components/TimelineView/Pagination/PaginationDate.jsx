@@ -2,33 +2,41 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 85%;
-  text-align: right;
+  flex: 8;
+  display: flex;
+  align-items: center;
+
+  & .icon-angle{
+    color: ${(props) => props.theme.color.text.secondary};
+    cursor: pointer;
+    padding: 0.5rem;
+    
+    i {
+      font-size: 2rem;
+    }
+    p {
+      font-size: 0.7rem;
+    }
+  }
 `;
 const Ul = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  color: #807660;
+  color: ${(props) => props.theme.color.text.secondary};
+  justify-content: space-around;
+  flex: 1;
   align-items: center;
-  right: 0;
-  i {
-    font-size: 50px;
-  }
-  P.icon-angle {
-    padding: 15px;
-    text-align: center;
-    color: #a59c87;
-    cursor: pointer;
-  }
+
   .active_pagination {
     color: #ffc107;
   }
 `;
 const Li = styled.li`
-  padding: 0% 2%;
   text-align: center;
   list-style: none;
   cursor: pointer;
+  width: 3rem;
+  line-height: 1.5;
 `;
 function PaginationDate() {
   const [date_temp, setDateTemp] = useState([]);
@@ -43,12 +51,10 @@ function PaginationDate() {
         today.getDate() + i
       );
       let dateString = tomorrow.toDateString();
-      let day = dateString.slice(0, 3);
       let month = dateString.slice(3, 7);
       let date = dateString.slice(8, 10);
       list_date.push({
         tomorrow: tomorrow,
-        day: day,
         month: month,
         date: date,
       });
@@ -72,15 +78,15 @@ function PaginationDate() {
   };
   return (
     <Container>
+      <p className="icon-angle" onClick={() => handleSetDate(-7)}>
+        <i className="fa fa-angle-left" aria-hidden="true"></i>
+        <p>-7</p>
+      </p>
+      <p className="icon-angle" onClick={() => handleSetDate(-1)}>
+        <i className="fa fa-angle-left" aria-hidden="true"></i>
+        <p>-1</p>
+      </p>
       <Ul>
-        <p className="icon-angle" onClick={() => handleSetDate(-7)}>
-          <i className="fa fa-angle-left" aria-hidden="true"></i>
-          <p>-7</p>
-        </p>
-        <p className="icon-angle" onClick={() => handleSetDate(-1)}>
-          <i className="fa fa-angle-left" aria-hidden="true"></i>
-          <p>-1</p>
-        </p>
         {date_temp.map((value, index) => {
           return (
             <Li
@@ -93,20 +99,19 @@ function PaginationDate() {
               onClick={() => handleChooseDate(value)}
             >
               <p>{value.date}</p>
-              <p>{value.day}</p>
               <p>{value.month}</p>
             </Li>
           );
         })}
-        <p className="icon-angle" onClick={() => handleSetDate(1)}>
-          <i className="fa fa-angle-right" aria-hidden="true"></i>
-          <p>+1</p>
-        </p>
-        <p className="icon-angle" onClick={() => handleSetDate(7)}>
-          <i className="fa fa-angle-right" aria-hidden="true"></i>
-          <p>+7</p>
-        </p>
       </Ul>
+      <p className="icon-angle" onClick={() => handleSetDate(1)}>
+        <i className="fa fa-angle-right" aria-hidden="true"></i>
+        <p>+1</p>
+      </p>
+      <p className="icon-angle" onClick={() => handleSetDate(7)}>
+        <i className="fa fa-angle-right" aria-hidden="true"></i>
+        <p>+7</p>
+      </p>
     </Container>
   );
 }

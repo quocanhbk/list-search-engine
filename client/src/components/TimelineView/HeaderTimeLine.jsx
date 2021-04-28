@@ -12,7 +12,7 @@ const Container = styled.div`
   font-size: 24px;
   line-height: 28px;
   color: #a59c87;
-  border-bottom: 1px solid;
+  border-bottom : 1px solid ${props => props.theme.color.border.primary};
 `;
 const Title = styled.h3``;
 const RightContent = styled.div`

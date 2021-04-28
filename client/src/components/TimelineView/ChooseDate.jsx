@@ -5,19 +5,19 @@ import PaginationDate from './Pagination/PaginationDate';
 const Container = styled.div`
     display: flex;
     width: 100%;
-    border-bottom: 1px solid #a59c87;
+    color: ${(props) => props.theme.color.border.secondary};
+    padding: 0.5rem;
 `;
 const Title = styled.div`
-    width: 15%;
+    flex: 2;
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
-    font-size: 16px;
-    line-height: 19px;
+    font-size: 1rem;
     display: flex;
+    justify-content: center;
     align-items: center;
-    text-align: center;
-    color: #807660
+    color: #807660;
 `;
 function ChooseDate() {
     return (
