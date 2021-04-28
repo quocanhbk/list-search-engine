@@ -45,7 +45,7 @@ function HeaderTimeLine() {
       <Title>Timeline Schedule</Title>
       <RightContent className={classes.root}>
         <Pagination
-          count={3}
+          count={10}
           variant="outlined"
           color="secondary"
           size="large"
@@ -53,8 +53,6 @@ function HeaderTimeLine() {
           outline="none"
           classes={{
             ul: classes.ul,
-            selectIcon: classes.tablePaginationSelectIcon,
-            select: classes.tablePaginationSelectIcon,
           }}
         />
       </RightContent>
