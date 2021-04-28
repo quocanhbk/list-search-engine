@@ -33,6 +33,9 @@ const TableWrapper = styled.div`
   padding: 0.5rem;
   border: 1px solid ${props => props.theme.color.border.primary};
   border-radius: 0.5rem;
+  & .cell {
+    font-size: 0.8rem;
+  }
 `
 const dataRatio = [
   {
@@ -93,9 +96,9 @@ const TableDashboard = (props) => {
           <Table.Body>
             {dataRatio.map(d => 
               <Table.Row key={d.id}>
-                <Table.Cell textAlign="left"><Progress textOnly progress={d.status}/></Table.Cell>
-                <Table.Cell textAlign="center">{d.overdue}</Table.Cell>
-                <Table.Cell textAlign="center">{d.task}</Table.Cell>
+                <Table.Cell className="cell" textAlign="left"><Progress textOnly progress={d.status}/></Table.Cell>
+                <Table.Cell className="cell" textAlign="center">{d.overdue}</Table.Cell>
+                <Table.Cell className="cell" textAlign="center">{d.task}</Table.Cell>
               </Table.Row>
               )}
           </Table.Body>
