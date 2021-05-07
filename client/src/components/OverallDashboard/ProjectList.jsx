@@ -28,7 +28,12 @@ const ListContent = styled.div`
   overflow: hidden;
 `;
 
-const data = [1, 2, 3];
+const projects = [
+  {
+    name: 'M04 Lancaster Luminaire',
+    value: 'M04'
+  }
+];
 
 function ProjectList() {
   return (
@@ -39,9 +44,9 @@ function ProjectList() {
       </StyleTitle>
 
       <ListContent className="list">
-        {data.map((value) => {
+        {projects.map((project) => {
           return (
-            <CardDashBoard key={value}/>
+            <CardDashBoard key={project.name} project={project} />
           );
         })}
       </ListContent>
