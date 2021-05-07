@@ -4,7 +4,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Avatar from '../Avatar';
 import Context from '../../Context';
-import useAvatar from '../../hooks/useAvatar';
 
 const CardWrapper = styled.div`
     border: 1px solid ${props => props.theme.color.border.primary};
@@ -52,13 +51,13 @@ const InformationZone = styled.div`
 
 const Card = ({name, email, onClick}) => {
 
-    const avatar = useAvatar("anh.lq@ttgvn.com")
+    
 
     return (
         <CardWrapper onClick={onClick}>
             <UserZone>
                 <div>
-                    <Avatar src={avatar} width="40px" height="40px"/>
+                    <Avatar src={`http://172.30.1.213:3600/api/v1/avatar/${email}`} width="40px" height="40px"/>
                 </div>
             </UserZone>
             <InformationZone>

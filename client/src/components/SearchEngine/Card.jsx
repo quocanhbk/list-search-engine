@@ -7,7 +7,6 @@ import Tag from '../Tag';
 import Progress from '../Progress';
 import DueDate from './DueDate';
 import Context from '../../Context';
-import useAvatar from '../../hooks/useAvatar';
 
 const CardWrapper = styled.div`
     border: 1px solid ${props => props.theme.color.border.primary};
@@ -88,13 +87,11 @@ const Card = ({assignee, email, headline, progress, category, dueDate, selected,
     }
     const {filterContext} = Context.useContainer()
 
-    const avatar = useAvatar(email)
-
     return (
         <CardWrapper selected={selected} onClick={onClick}>
             <UserZone onClick={(e) => {e.stopPropagation(); filterContext.addFilter("assignee", assignee)}}>
                 <div>
-                    <Avatar src={avatar} width="40px" height="40px"/>
+                    <Avatar src={`http://172.30.1.213:3600/api/v1/avatar/${email}`} width="40px" height="40px"/>
                 </div>
                 <p>{getName()}</p>
             </UserZone>

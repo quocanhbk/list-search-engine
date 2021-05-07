@@ -17,7 +17,7 @@ const SearchEnginePage = () => {
         if (selectedId) {
             const getDetail = async () => {
                 setLoadDetail(true)
-                fetch('http://172.30.1.213:3600/api/v1/tasks/' + selectedId, {method: 'GET'})
+                fetch('http://172.30.1.213:3600/api/v1/tasks/M04/' + selectedId, {method: 'GET'})
                     .then((res) => res.json())
                     .then((result) => {
                         setSelectedItem(result)
