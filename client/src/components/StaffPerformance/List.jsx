@@ -1,10 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import ListLoader from '../SearchEngine/ListLoader';
 import ListToolbar from '../SearchEngine/ListToolbar';
 import Card from './Card';
 import { getFader } from '../../utils/color';
-import useGetAllTasks from '../../hooks/taskServices/useGetAllTask';
 
 const DisplayListWrapper = styled.div`
   flex: 5;
@@ -41,32 +41,7 @@ const CardList = styled.div`
   }
 `;
 
-const sample = [
-  {
-    id: 1,
-    name: 'Van Thuan Quan',
-    email: 'quanvt@ttgvn.com'
-  },
-  {
-    id: 2,
-    name: 'Nguyen Hoang Tan',
-    email: 'quanvt@ttgvn.com'
-  },
-  {
-    id: 3,
-    name: 'Quoc Anh',
-    email: 'quanvt@ttgvn.com'
-  },
-  {
-    id: 4,
-    name: 'Kim Son',
-    email: 'quanvt@ttgvn.com'
-  },
-]
-const DisplayList = () => {
-
-  let [loading] = useGetAllTasks()
-
+const DisplayList = ({ assigneesData, loading, cardOnClick }) => {
   return (
     <DisplayListWrapper>
       <ListToolbar/>
@@ -75,11 +50,12 @@ const DisplayList = () => {
         {loading? 
           <ListLoader/> : 
           <>
-          {sample.map((task) => (
+          {assigneesData && assigneesData.map((assignee) => (
             <Card
-              key={task.Id}
-              email={task.email}
-              name={task.name}
+              key={assignee.EMail}
+              email={assignee.EMail}
+              name={assignee.Title}
+              onClick={() => cardOnClick(assignee.EMail)}
             />
           ))}
           </>

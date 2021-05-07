@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -14,7 +15,7 @@ const DisplayContentWrapper = styled.div`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.32);
   box-sizing: border-box;
   padding: 0.5rem;
-  display:flex;
+  display: flex;
   flex-direction: column;
 `;
 
@@ -25,10 +26,10 @@ const TaskTitleAnndStatus = styled.div`
 `;
 
 const StyleContainer = styled.div`
-  display:flex;
+  display: flex;
   flex: 1;
-  margin-top : 0.5rem;
-`
+  margin-top: 0.5rem;
+`;
 
 const Observator = ({ name }) => {
   return (
@@ -38,7 +39,9 @@ const Observator = ({ name }) => {
         height="56px"
         src="http://localhost:3600/api/v1/avatar/son.nk@ttgvn.com"
       />
-      <Typography.CAPTION style={{textAlign: 'center'}}>{name}</Typography.CAPTION>
+      <Typography.CAPTION style={{ textAlign: 'center' }}>
+        {name}
+      </Typography.CAPTION>
     </div>
   );
 };
@@ -47,16 +50,15 @@ Observator.propTypes = {
   name: PropTypes.string,
 };
 
-
-const DisplayContent = () => {
+const DisplayContent = ({ performanceData }) => {
   return (
     <DisplayContentWrapper>
       <TaskTitleAnndStatus>
         <Typography.H5>Work Item 1</Typography.H5>
       </TaskTitleAnndStatus>
       <StyleContainer>
-        <Content1/>
-        <Content2/> 
+        <Content1 performanceData={performanceData}/>
+        <Content2 />
       </StyleContainer>
     </DisplayContentWrapper>
   );
