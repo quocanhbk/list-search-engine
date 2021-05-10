@@ -26,8 +26,9 @@ const DisplayListWrapper = styled.div`
 const TagBar = styled.div`
   display: flex;
   gap: 0.5rem;
-  height: 2.5rem;
+  justify-content: flex-start;
   align-items: center;
+  margin-top: 1rem;
 `;
 const TagContainer = styled.div`
   display: flex;
@@ -45,6 +46,7 @@ const CardList = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-top: 1rem;
   scrollbar-width: none;
   ::-webkit-scrollbar {
     width: 0.5rem;
@@ -82,7 +84,7 @@ const DisplayList = ({ selectedId, handleSelectCard, handleToggleSideBar, isMobi
     setProject(pj);
     console.log(pj);
   };
-  
+
   const { filter } = filterContext;
   let [loading, tasks] = useGetAllTasks(project);
   console.log('Tasks:', tasks, 'Loading: ', loading);
