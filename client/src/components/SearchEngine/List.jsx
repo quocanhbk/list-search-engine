@@ -37,7 +37,7 @@ const TagContainer = styled.div`
 const CardList = styled.div`
   width: 100%;
   flex: 1;
-  overflow: overlay;
+  overflow: auto;
   border-top: 1px solid ${(props) => props.theme.color.border.primary};
   border-bottom: 1px solid ${(props) => props.theme.color.border.primary};
   gap: 0.5rem;

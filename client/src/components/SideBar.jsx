@@ -119,11 +119,12 @@ const Footer = styled.div`
     justify-content: center;
   }
 `;
-const SideBar = ({ mobile, open, setSideBar }) => {
+const SideBar = ({ mobile, open, setSideBar = () => {} }) => {
   const { themeContext } = Context.useContainer();
   const [pathname, setPathname] = useState(location.pathname);
-  const ref = useClickOutside(() => {setSideBar(false);console.log("close")})
-  return open ? (
+  const ref = useClickOutside(() => {setSideBar(false);console.log("close")});
+  // Render on open && desktop
+  return open || !mobile ? (
     <SidebarContainer ref={ref} mobile={mobile}>
       <Header>
         <Logo
