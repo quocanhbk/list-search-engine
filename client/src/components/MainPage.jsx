@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import SideBar from './SideBar';
 import styled from 'styled-components';
@@ -30,13 +30,12 @@ const Mobile = ({ children }) => {
   return isMobile ? children : null;
 };
 
-const MobileSearchPage = ({setSelectedId}) => {
+const MobileSearchPage = () => {
   const [open, setSideBar] = useState(false);
   const handleToggleSideBar = () => {
     setSideBar(!open);
   };
   const handleSelectCard = (id, history) => {
-    setSelectedId(id);
     history.push(`/${id}`);
   };
   return (
@@ -53,33 +52,7 @@ const MobileSearchPage = ({setSelectedId}) => {
 
 // Cant fucking scroll with the shitass reach-router lib, have to use react router dom;
 const MainPage = () => {
-  const [selectedId, setSelectedId] = useState();
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [loadDetail, setLoadDetail] = useState(false);
-
-  useEffect(() => {
-    if (selectedId) {
-      const getDetail = async () => {
-        try {
-          setLoadDetail(true);
-          const response = await fetch(
-            'http://172.30.1.213:3600/api/v1/tasks/M04/' + selectedId,
-            { method: 'GET' }
-          );
-          if (!response.ok) {
-            throw new Error('Failed to fetch detail of task ' + selectedId);
-          }
-          const result = await response.json();
-          setSelectedItem(result);
-        } catch (err) {
-          console.error(err);
-        } finally {
-          setLoadDetail(false);
-        }
-      };
-      getDetail();
-    }
-  }, [selectedId]);
+  
   return (
     <>
       <Desktop>
@@ -101,10 +74,10 @@ const MainPage = () => {
         <BrowserRouter>
           <Switch>
             <Route exact path="/">
-              <MobileSearchPage setSelectedId={setSelectedId}/>
+              <MobileSearchPage/>
             </Route>
             <Route>
-              <DetailTaskMobile path="/:itemId" item={selectedItem} loading={loadDetail} />
+              <DetailTaskMobile path="/:itemId"/>
             </Route>
           </Switch>
         </BrowserRouter>
