@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import { BsFilterLeft, BsFunnel } from 'react-icons/bs';
+import { BsFilterLeft, BsFunnel, BsList } from 'react-icons/bs';
 import Searchbar from '../Searchbar'
 import styled from 'styled-components'
 import Context from '../../Context';
@@ -39,7 +40,7 @@ const SearchAndFilter = styled.div`
   padding: 1rem 0 0.5rem;
   gap: 0.5rem;
 `;
-const ListToolbar = () => {
+const ListToolbar = ( {isMobile, handleToggleSideBar} ) => {
     const {searchContext} = Context.useContainer()
     const [filterPopup, setFilterPopup] = useState(false)
     const [sortPopup, setSortPopup] = useState(false)
@@ -61,6 +62,7 @@ const ListToolbar = () => {
     })
     return (
         <SearchAndFilter>
+            {isMobile && <BsList onClick={handleToggleSideBar} /> }
             <Searchbar search={searchContext.search} setSearch={searchContext.setSearch}/>
             <IconWrapper ref={ref1}>
                 <BsFunnel size="20px" onClick={(e) => handlePopup(e, "filter")}/>

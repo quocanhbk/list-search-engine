@@ -13,6 +13,7 @@ const SearchEnginePage = () => {
   const [selectedId, setSelectedId] = useState();
   const [selectedItem, setSelectedItem] = useState(null);
   const [loadDetail, setLoadDetail] = useState(false);
+
   useEffect(() => {
     if (selectedId) {
       const getDetail = async () => {

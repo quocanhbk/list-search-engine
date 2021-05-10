@@ -10,14 +10,14 @@ const StyledApp = styled.div`
   overflow: hidden;
   transition: background 0.25s ease-out;
 `;
-const Container = () => {
-  const {themeContext} = Context.useContainer()
 
+const Container = () => {
+  const { themeContext } = Context.useContainer();
   return (
     <ThemeProvider theme={themeContext.isDark ? theme.dark : theme.light}>
-        <StyledApp>
-            <MainPage/>
-        </StyledApp>
+      <StyledApp>
+        <MainPage />
+      </StyledApp>
     </ThemeProvider>
   );
 };
