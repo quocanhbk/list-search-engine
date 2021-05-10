@@ -9,6 +9,7 @@ import useGetAllTasks from '../../hooks/taskServices/useGetAllTask';
 import ListLoader from './ListLoader';
 import ListToolbar from './ListToolbar';
 import Carousel from './Carousel';
+import { useHistory } from 'react-router';
 
 const DisplayListWrapper = styled.div`
   flex: 6;
@@ -75,6 +76,7 @@ const ListFooter = styled.div`
 const DisplayList = ({ selectedId, handleSelectCard, handleToggleSideBar, isMobile }) => {
   const { searchContext, filterContext } = Context.useContainer();
   const [project, setProject] = useState('');
+  const history = useHistory();
   const handleSetProject = (pj) => {
     setProject(pj);
     console.log(pj);
@@ -173,7 +175,7 @@ const DisplayList = ({ selectedId, handleSelectCard, handleToggleSideBar, isMobi
                 category={task.Category}
                 dueDate={task.DueDate}
                 selected={selectedId === task.Id}
-                onClick={() => handleSelectCard(task.Id)}
+                onClick={() => handleSelectCard(task.Id, history)}
               />
             ))}
           </>
