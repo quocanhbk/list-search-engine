@@ -72,7 +72,7 @@ const ListFooter = styled.div`
   padding: 0.5rem 0;
   color: ${(props) => props.theme.color.text.secondary};
 `;
-const DisplayList = ({ selectedId, setSelectedId, handleToggleSideBar, isMobile }) => {
+const DisplayList = ({ selectedId, handleSelectCard, handleToggleSideBar, isMobile }) => {
   const { searchContext, filterContext } = Context.useContainer();
   const [project, setProject] = useState('');
   const handleSetProject = (pj) => {
@@ -173,7 +173,7 @@ const DisplayList = ({ selectedId, setSelectedId, handleToggleSideBar, isMobile 
                 category={task.Category}
                 dueDate={task.DueDate}
                 selected={selectedId === task.Id}
-                onClick={() => setSelectedId(task.Id)}
+                onClick={() => handleSelectCard(task.Id)}
               />
             ))}
           </>

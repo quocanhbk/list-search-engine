@@ -4,7 +4,7 @@ import SideBar from './SideBar';
 import styled from 'styled-components';
 import pageList from '../pageList';
 import List from './SearchEngine/List';
-import { Router } from '@reach/router';
+import { Router, navigate } from '@reach/router';
 const PageContainer = styled.div`
   display: flex;
   height: 100%;
@@ -27,11 +27,31 @@ const Mobile = ({ children }) => {
   return isMobile ? children : null;
 };
 
-const MainPage = () => {
+const MobileSearchPage = () => {
   const [open, setSideBar] = useState(false);
   const handleToggleSideBar = () => {
     setSideBar(!open);
-  }
+  };
+  const handleSelectCard = (id) => {
+    navigate(`/${id}`);
+  };
+  return (
+    <>
+      <SideBar open={open} mobile={true} setSideBar={setSideBar} />
+      <List
+        isMobile={true}
+        handleToggleSideBar={handleToggleSideBar}
+        handleSelectCard={handleSelectCard}
+      />
+    </>
+  );
+};
+
+const Test = () => {
+  return <div>123</div>
+}
+
+const MainPage = () => {
   return (
     <>
       <Desktop>
@@ -50,8 +70,10 @@ const MainPage = () => {
         </PageContainer>
       </Desktop>
       <Mobile>
-        <SideBar open={open} mobile={true} setSideBar={setSideBar}/>
-        <List isMobile={true} handleToggleSideBar={handleToggleSideBar}/>
+        <Router>
+          <MobileSearchPage path="/"/>
+          <Test path="/:itemId" />
+        </Router>
       </Mobile>
     </>
   );

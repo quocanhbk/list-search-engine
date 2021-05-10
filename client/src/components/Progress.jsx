@@ -53,6 +53,7 @@ const Container = styled.div`
     gap: 0.2rem;
     align-items: center;
     cursor: pointer;
+    flex-basis: 92px;
 `
 
 const Progress = ({progress, onClick, textOnly}) => {

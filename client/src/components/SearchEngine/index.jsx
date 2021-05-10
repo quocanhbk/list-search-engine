@@ -37,9 +37,12 @@ const SearchEnginePage = () => {
       getDetail();
     }
   }, [selectedId]);
+  const handleSelectCard = (id) => {
+    setSelectedId(id);
+  }
   return (
     <Container>
-      <List selectedId={selectedId} setSelectedId={setSelectedId} />
+      <List selectedId={selectedId} handleSelectCard={handleSelectCard} />
       <Content item={selectedItem} loading={loadDetail} />
     </Container>
   );
