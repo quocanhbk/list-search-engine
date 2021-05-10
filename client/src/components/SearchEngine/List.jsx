@@ -17,7 +17,8 @@ const DisplayListWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
   max-width: 480px;
   min-width: 320px;
 `;
