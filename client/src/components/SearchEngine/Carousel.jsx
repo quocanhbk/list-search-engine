@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+import { getFader } from '../../utils/color';
 
 const ListWrapper = styled.ul`
   display: flex;
   list-style: none;
+  margin-bottom: 0.5rem;
 `;
 const ListItem = styled.li`
   display: flex;
@@ -25,13 +26,26 @@ const CarouselWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: auto;
+  ::-webkit-scrollbar {
+    width: 0.3rem;
+    height: 0.3rem;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${props => getFader(props.theme.color.fill.secondary, 0.5)};
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${props => props.theme.color.fill.secondary};
+  }
 `;
 
-const Carousel = ({ list = [], selectedItem, showArrowOn = 6, onItemClick = () => {} }) => {
-  const showArrow = list.length > showArrowOn;
+const Carousel = ({ list = [], selectedItem, onItemClick = () => {} }) => {
   return (
     <CarouselWrapper>
-      {showArrow && <BsChevronLeft />}
       <ListWrapper>
         {list.map((item) => (
           <ListItem onClick={() => onItemClick(item.value)} isActive={selectedItem === item.value} key={item.value}>
@@ -39,7 +53,6 @@ const Carousel = ({ list = [], selectedItem, showArrowOn = 6, onItemClick = () =
           </ListItem>
         ))}
       </ListWrapper>
-      {showArrow && <BsChevronRight />}
     </CarouselWrapper>
   );
 };
@@ -47,7 +60,6 @@ const Carousel = ({ list = [], selectedItem, showArrowOn = 6, onItemClick = () =
 Carousel.propTypes = {
   list: PropTypes.array,
   selectedItem: PropTypes.any,
-  showArrowOn: PropTypes.number,
   onItemClick: PropTypes.func,
 };
 

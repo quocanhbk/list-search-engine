@@ -18,6 +18,8 @@ const DisplayListWrapper = styled.div`
   flex-direction: column;
   height: 100%;
   padding: 0 0.5rem;
+  max-width: 480px;
+  min-width: 320px;
 `;
 
 
@@ -33,8 +35,6 @@ const TagContainer = styled.div`
   gap: 0.5rem;
 `;
 
-
-
 const CardList = styled.div`
   width: 100%;
   flex: 1;
@@ -45,6 +45,7 @@ const CardList = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  scrollbar-width: none;
   ::-webkit-scrollbar {
     width: 0.5rem;
   }
@@ -60,7 +61,12 @@ const CardList = styled.div`
   }
 `;
 
-const sampleProject = [{label: 'M01', value: 'M01'}, {label: 'M02', value: 'M02'}, {label: 'M04', value: 'M04'} ]
+const sampleProject = [
+  { label: 'M01', value: 'M01' },
+  { label: 'M02', value: 'M02' },
+  { label: 'M03', value: 'M03' },
+  { label: 'M04', value: 'M04' },
+];
 
 const ListFooter = styled.div`
   font-size: 0.8rem;
