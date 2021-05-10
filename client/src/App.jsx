@@ -9,6 +9,7 @@ const StyledApp = styled.div`
   height: 100vh;
   overflow: hidden;
   transition: background 0.25s ease-out;
+  scroll-behavior: smooth;
 `;
 
 const Container = () => {

@@ -11,8 +11,10 @@ const Container = styled.div`
 `
 const NameTagContainer = styled.div`
     display: flex;
-    gap: 0.5rem;
     flex-wrap: wrap;
+    & > div {
+      margin-top: 0.5rem;
+    }
 `
 const NameCard = ({headline, children}) => {
     

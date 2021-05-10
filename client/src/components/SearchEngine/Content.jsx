@@ -14,6 +14,7 @@ const DisplayContentWrapper = styled.div`
   background-color: ${(props) => props.theme.color.background.secondary};
   color: ${(props) => props.theme.color.text.primary};
   padding: 0.5rem;
+  padding-bottom: 5rem;
   border-left: 1px solid ${(props) => props.theme.color.border.primary};
   overflow-y: auto;
   overflow-x: hidden;
@@ -21,7 +22,9 @@ const DisplayContentWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  & > div {
+    margin-top: 1rem;
+  }
   ::-webkit-scrollbar {
     width: 0.5rem;
   }
@@ -40,13 +43,13 @@ const DisplayContentWrapper = styled.div`
 const TaskTitleAnndStatus = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0.5rem 0;
   margin-bottom: 0.5rem;
   & .title {
     font-size: 1.2rem;
     color: ${(props) => props.theme.color.fill.primary};
   }
-  border-bottom: 1px solid ${(props) => props.theme.color.border.primary};
 `;
 const TagContainer = styled.div`
   display: flex;
@@ -69,6 +72,11 @@ const HorizontalLine = styled.div`
 const DisplayContent = ({ item, loading }) => {
   const dateToString = (date) =>
     date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+  const shortenName = (name) =>
+    name.slice(
+      name.lastIndexOf('-') !== -1 ? name.lastIndexOf('-') + 1 : 0,
+      name.length
+    );
   return (
     <DisplayContentWrapper>
       {loading ? (
@@ -111,36 +119,33 @@ const DisplayContent = ({ item, loading }) => {
               <div>
                 <b>Priority</b>
               </div>
-              <div>
-                {item.Priority}
-              </div>
+              <div>{item.Priority}</div>
             </HorizontalLine>
             <HorizontalLine>
               <div>
                 <b>Start Date</b>
               </div>
-              <div>
-                {dateToString(new Date(item.StartDate))}
-              </div>
+              <div>{dateToString(new Date(item.StartDate))}</div>
             </HorizontalLine>
             <HorizontalLine>
               <div>
                 <b>Due Date</b>
               </div>
-              <div>
-                {dateToString(new Date(item.DueDate))}
-              </div>
+              <div>{dateToString(new Date(item.DueDate))}</div>
             </HorizontalLine>
           </InfoContainer>
 
           <InfoContainer headline="Participants">
             <ParRow>
               <NameCard headline="Creator">
-                <NameTag name={item.Author.Title} email={item.Author.EMail} />
+                <NameTag
+                  name={shortenName(item.Author.Title)}
+                  email={item.Author.EMail}
+                />
               </NameCard>
               <NameCard headline="Assignee">
                 <NameTag
-                  name={item.AssignedTo.Title}
+                  name={shortenName(item.AssignedTo.Title)}
                   email={item.AssignedTo.EMail}
                 />
               </NameCard>
@@ -148,7 +153,11 @@ const DisplayContent = ({ item, loading }) => {
             <NameCard headline="Observators">
               {item.KeepinCC &&
                 item.KeepinCC.map((i) => (
-                  <NameTag key={i.Title} name={i.Title} email={i.EMail} />
+                  <NameTag
+                    key={i.Title}
+                    name={shortenName(i.Title)}
+                    email={i.EMail}
+                  />
                 ))}
             </NameCard>
           </InfoContainer>

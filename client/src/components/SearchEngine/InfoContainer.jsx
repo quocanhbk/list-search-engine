@@ -2,11 +2,11 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Container = styled.div``
+const Container = styled.div`
+`
 const HeadlineContainer = styled.div`
     display: flex;
     align-items: center;
-    gap: 0.5rem;
     font-size: 1.1rem;
     color: ${props => props.theme.color.fill.primary};
     padding: 0 0.5rem;
@@ -19,10 +19,11 @@ const Body = styled.div`
     padding: 1rem 1rem;
     border-radius: 0.5rem;
     margin-top: 0.4rem;
-
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    & > div {
+      margin-top: 1rem;
+    }
 `
 
 const InfoContainer = ({headline, children}) => {
