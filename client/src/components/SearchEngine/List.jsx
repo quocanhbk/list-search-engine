@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Card from './Card';
 import Tag from '../Tag';
@@ -73,14 +73,16 @@ const ListFooter = styled.div`
   padding: 0.5rem 0;
   color: ${(props) => props.theme.color.text.secondary};
 `;
-const DisplayList = ({ selectedId, handleSelectCard, handleToggleSideBar, isMobile }) => {
-  const { searchContext, filterContext } = Context.useContainer();
-  const [project, setProject] = useState('');
+const DisplayList = ({ selectedId, handleSelectCard, handleToggleSideBar, isMobile, }) => {
+  const { searchContext, filterContext, projectContext } = Context.useContainer();
   const history = useHistory();
+
+  const {project, setProject} = projectContext;
   const handleSetProject = (pj) => {
     setProject(pj);
     console.log(pj);
   };
+  
   const { filter } = filterContext;
   let [loading, tasks] = useGetAllTasks(project);
   console.log('Tasks:', tasks, 'Loading: ', loading);

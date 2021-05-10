@@ -43,11 +43,18 @@ const useFilter = () => {
 
     return {filter, addFilter, removeFilter}
 }
+
+const useProject = () => {
+  const [project, setProject] = useState('');
+  return {project, setProject};
+}
+
 const useContext = () => {
-    let themeContext = useTheme()
-    let searchContext = useSearch()
-    let filterContext = useFilter()
-    return {themeContext, searchContext, filterContext}
+    let themeContext = useTheme();
+    let searchContext = useSearch();
+    let filterContext = useFilter();
+    const projectContext = useProject();
+    return {themeContext, searchContext, filterContext, projectContext}
 }
 
 const Context = createContainer(useContext)

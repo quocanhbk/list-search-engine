@@ -38,6 +38,7 @@ const MobileSearchPage = () => {
   const handleSelectCard = (id, history) => {
     history.push(`/${id}`);
   };
+
   return (
     <>
       <SideBar open={open} mobile={true} setSideBar={setSideBar} />
@@ -52,7 +53,6 @@ const MobileSearchPage = () => {
 
 // Cant fucking scroll with the shitass reach-router lib, have to use react router dom;
 const MainPage = () => {
-  
   return (
     <>
       <Desktop>
@@ -74,10 +74,10 @@ const MainPage = () => {
         <BrowserRouter>
           <Switch>
             <Route exact path="/">
-              <MobileSearchPage/>
+              <MobileSearchPage />
             </Route>
             <Route>
-              <DetailTaskMobile path="/:itemId"/>
+              <DetailTaskMobile path="/:itemId" />
             </Route>
           </Switch>
         </BrowserRouter>
