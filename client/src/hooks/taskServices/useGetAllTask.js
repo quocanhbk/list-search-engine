@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import sampleData from '../../sampleData'
-const useGetAllTasks = () => {
+const useGetAllTasks = (project) => {
   const [loading, setLoading] = useState(true);
   const [tasks, setTasks] = useState([]);
   useEffect(() => {
@@ -8,7 +8,7 @@ const useGetAllTasks = () => {
       method: 'GET',
       
     };
-    fetch('http://172.30.1.213:3600/api/v1/tasks/m04', options)
+    fetch(`http://172.30.1.213:3600/api/v1/tasks/${project}`, options)
       .then((res) => res.json())
       .then((result) => {
         setTasks(result);

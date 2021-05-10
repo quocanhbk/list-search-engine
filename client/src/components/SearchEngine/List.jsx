@@ -67,7 +67,7 @@ const ListFooter = styled.div`
 const DisplayList = ({selectedId, setSelectedId}) => {
   const {searchContext, filterContext} = Context.useContainer()
   const {filter} = filterContext
-  let [loading, tasks] = useGetAllTasks()
+  let [loading, tasks] = useGetAllTasks('M04');
   console.log("Tasks:" ,tasks, "Loading: ", loading)
   
   const shapedData = tasks.map(item => {
