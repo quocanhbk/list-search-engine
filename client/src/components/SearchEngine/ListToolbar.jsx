@@ -6,7 +6,7 @@ import Searchbar from '../Searchbar'
 import styled from 'styled-components'
 import Context from '../../Context';
 import useClickOutside from '../../hooks/useClickOutside'
-const IconWrapper = styled.button`
+export const IconWrapper = styled.button`
   color: ${(props) => props.theme.color.fill.primary};
   background-color: ${props => props.theme.color.background.secondary};
   border: 1px solid ${props => props.theme.color.border.primary};

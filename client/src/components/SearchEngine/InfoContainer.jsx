@@ -16,13 +16,13 @@ const Body = styled.div`
     background: ${props => props.theme.color.background.primary};
     border: 1px solid ${props => props.theme.color.border.primary};
     //box-shadow: ${props => props.theme.shadow};
-    padding: 1rem 1rem;
+    padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     margin-top: 0.4rem;
     display: flex;
     flex-direction: column;
     & > div {
-      margin-top: 1rem;
+      margin-top: 0.5rem;
     }
 `
 

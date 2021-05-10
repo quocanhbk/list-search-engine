@@ -17,8 +17,9 @@ const ListItem = styled.li`
   border: ${(props) =>
     props.isActive ? `0.5px solid ${props.theme.color.fill.primary}` : 'none'};
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
+  font-size: 0.8rem;
+  width: 40px;
+  height: 40px;
   margin-left: 1rem;
 `;
 

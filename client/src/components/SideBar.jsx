@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { BsThreeDotsVertical } from 'react-icons/bs';
+import { BsList, BsThreeDotsVertical } from 'react-icons/bs';
 import Avatar from './Avatar';
 import Context from '../Context';
 import ThemeToggle from './ThemeToggle';
@@ -9,6 +9,7 @@ import pageList from '../pageList';
 import { navigate } from '@reach/router';
 import { getFader } from '../utils/color';
 import useClickOutside from '../hooks/useClickOutside';
+import { IconWrapper } from '../components/SearchEngine/ListToolbar';
 
 // Hard Coded the background-color, not gonna bother with this thing
 // C'mon man!
@@ -126,6 +127,7 @@ const SideBar = ({ mobile, open, setSideBar = () => {} }) => {
   // Render on open && desktop
   return open || !mobile ? (
     <SidebarContainer ref={ref} mobile={mobile}>
+      {mobile && <IconWrapper onClick={() => setSideBar(false)} style={{justifyContent: 'flex-start', width: '40px'}}><BsList size={24}/></IconWrapper>}
       <Header>
         <Logo
           src={
