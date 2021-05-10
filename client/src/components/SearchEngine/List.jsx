@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Card from './Card';
 import Tag from '../Tag';
@@ -8,6 +8,7 @@ import Context from '../../Context';
 import useGetAllTasks from '../../hooks/taskServices/useGetAllTask';
 import ListLoader from './ListLoader';
 import ListToolbar from './ListToolbar';
+import Carousel from './Carousel';
 
 const DisplayListWrapper = styled.div`
   flex: 6;
@@ -59,15 +60,22 @@ const CardList = styled.div`
   }
 `;
 
+const sampleProject = [{label: 'M01', value: 'M01'}, {label: 'M02', value: 'M02'}, {label: 'M04', value: 'M04'} ]
+
 const ListFooter = styled.div`
   font-size: 0.8rem;
   padding: 0.5rem 0;
   color: ${props => props.theme.color.text.secondary};
 `
 const DisplayList = ({selectedId, setSelectedId}) => {
-  const {searchContext, filterContext} = Context.useContainer()
+  const {searchContext, filterContext} = Context.useContainer();
+  const [project, setProject] = useState('');
+  const handleSetProject = (pj) => {
+    setProject(pj);
+    console.log(pj);
+  }
   const {filter} = filterContext
-  let [loading, tasks] = useGetAllTasks('M04');
+  let [loading, tasks] = useGetAllTasks(project);
   console.log("Tasks:" ,tasks, "Loading: ", loading)
   
   const shapedData = tasks.map(item => {
@@ -97,6 +105,7 @@ const DisplayList = ({selectedId, setSelectedId}) => {
   return (
     <DisplayListWrapper>
       <ListToolbar/>
+      <Carousel selectedItem={project} onItemClick={handleSetProject} list={sampleProject} />
       <TagBar>
         <p>Filter: </p>
         <TagContainer>
