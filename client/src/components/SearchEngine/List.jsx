@@ -179,7 +179,7 @@ const DisplayList = ({ selectedId, handleSelectCard, handleToggleSideBar, isMobi
                 category={task.Category}
                 dueDate={task.DueDate}
                 selected={selectedId === task.Id}
-                onClick={() => handleSelectCard(task.Id, history)}
+                onClick={() => handleSelectCard(task.Id, history, project)}
               />
             ))}
           </>

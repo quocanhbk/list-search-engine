@@ -1,7 +1,6 @@
 import React from 'react';
-import { useParams } from 'react-router';
+import { useParams, useLocation } from 'react-router';
 import styled from 'styled-components';
-import Context from '../../Context';
 import useGetTaskDetail from '../../hooks/taskServices/useGetTaskDetail';
 // import List from './List';
 import Content from './Content';
@@ -15,9 +14,10 @@ const Container = styled.div`
 const SearchEnginePage = () => {
 
   // For Fetching
-  const { projectContext } = Context.useContainer();
-  const { project } = projectContext;
   const { itemId } = useParams();
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const project = query.get('project');
   const [ selectedItem, loadDetail] = useGetTaskDetail(itemId, project);
   
   return (

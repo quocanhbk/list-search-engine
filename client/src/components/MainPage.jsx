@@ -28,8 +28,8 @@ const MobileSearchPage = () => {
   const handleToggleSideBar = () => {
     setSideBar(!open);
   };
-  const handleSelectCardMobile = (id, history) => {
-    history.push(`/${id}`);
+  const handleSelectCardMobile = (id, history, project) => {
+    history.push(`/${id}?project=${project}`);
   };
 
   return (
@@ -45,8 +45,8 @@ const MobileSearchPage = () => {
 };
 
 const DesktopSearchPage = () => {
-  const handleSelectionCardDesktop = (id, history) => {
-    history.push(`/${id}`)
+  const handleSelectionCardDesktop = (id, history, project) => {
+    history.push(`/${id}?project=${project}`)
   }
   const { itemId } = useParams();
   return (
