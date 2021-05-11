@@ -23,17 +23,20 @@ export const IconWrapper = styled.button`
     background: ${props => props.theme.color.border.primary};
   }
 `;
-const PopupWrapper = styled.div`
+export const PopupWrapper = styled.div`
     position: absolute;
     width: 160px;
-    height: 160px;
+    min-height: 120px;
     right: 0;
     top: 120%;
     z-index: 99;
     border: 1px solid ${props => props.theme.color.border.primary};
     background: ${props => props.theme.color.background.primary};
     border-radius: 1rem;
-`
+    padding: 1rem;
+    box-sizing: border-box;
+`;
+
 const SearchAndFilter = styled.div`
   display: flex;
   align-items: center;

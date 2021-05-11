@@ -10,7 +10,7 @@ import pageList from '../pageList';
 import { navigate } from '@reach/router';
 import { getFader } from '../utils/color';
 import useClickOutside from '../hooks/useClickOutside';
-import { IconWrapper } from '../components/SearchEngine/ListToolbar';
+import { IconWrapper, PopupWrapper } from '../components/SearchEngine/ListToolbar';
 
 // Hard Coded the background-color, not gonna bother with this thing
 // C'mon man!
@@ -129,10 +129,12 @@ const SideBar = ({ mobile, open, setSideBar = () => {} }) => {
       name.length
     );
   const { themeContext } = Context.useContainer();
-  const { accounts } = useMsal();
+  const [openMenu, setMenu ] = useState(false);
+  const { accounts, instance } = useMsal();
   const user = accounts[0];
   const [pathname, setPathname] = useState(location.pathname);
   const ref = useClickOutside(() => {setSideBar(false);console.log("close")});
+  const refMenu = useClickOutside(() => {setMenu(false);})
   // Render on open && desktop
   return open || !mobile ? (
     <SidebarContainer ref={ref} mobile={mobile}>
@@ -143,7 +145,7 @@ const SideBar = ({ mobile, open, setSideBar = () => {} }) => {
             themeContext.isDark ? '/iconNoTextDark.svg' : '/iconNoTextLight.svg'
           }
         />
-        <h1>Project Management Dashboard</h1>
+        <h1>Project Management</h1>
       </Header>
       <UserDisplayCard>
         <Avatar
@@ -153,7 +155,10 @@ const SideBar = ({ mobile, open, setSideBar = () => {} }) => {
           <h3>{shortenName(user.name)}</h3>
           <p>{user.username}</p>
         </UserDisplayCardInfo>
-        <BsThreeDotsVertical size="20px" />
+        <IconWrapper ref={refMenu} onClick={() => setMenu(!openMenu)}>
+          <BsThreeDotsVertical size="20px" />
+          {openMenu && <PopupWrapper><div onClick={() => instance.logout()}>Logout</div></PopupWrapper>}
+        </IconWrapper>
       </UserDisplayCard>
       <NavList>
         {pageList.map((item) => (
