@@ -3,23 +3,16 @@ import React, { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import SideBar from './SideBar';
 import styled from 'styled-components';
-import pageList from '../pageList';
 import List from './SearchEngine/List';
-import { Router } from '@reach/router';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useParams } from 'react-router-dom';
 import DetailTaskMobile from './DetailTaskMobile';
+import SearchEnginePage from './SearchEngine';
+import NoSelectionIndicator from './SearchEngine/NoSelectionIndicator';
 const PageContainer = styled.div`
   display: flex;
   height: 100%;
 `;
 
-const BodyContainer = styled.div`
-  flex: 18;
-  height: 100%;
-  & .router {
-    height: 100%;
-  }
-`;
 const Desktop = ({ children }) => {
   const isDesktop = useMediaQuery({ minWidth: 768 });
   return isDesktop ? children : null;
@@ -35,7 +28,7 @@ const MobileSearchPage = () => {
   const handleToggleSideBar = () => {
     setSideBar(!open);
   };
-  const handleSelectCard = (id, history) => {
+  const handleSelectCardMobile = (id, history) => {
     history.push(`/${id}`);
   };
 
@@ -45,30 +38,46 @@ const MobileSearchPage = () => {
       <List
         isMobile={true}
         handleToggleSideBar={handleToggleSideBar}
-        handleSelectCard={handleSelectCard}
+        handleSelectCard={handleSelectCardMobile}
       />
     </>
   );
 };
+
+const DesktopSearchPage = () => {
+  const handleSelectionCardDesktop = (id, history) => {
+    history.push(`/${id}`)
+  }
+  const { itemId } = useParams();
+  return (
+    <>
+      <SideBar />
+      <List
+        selectedId={itemId}
+        handleSelectCard={handleSelectionCardDesktop}
+      />
+    </>
+  );
+}
 
 // Cant fucking scroll with the shitass reach-router lib, have to use react router dom;
 const MainPage = () => {
   return (
     <>
       <Desktop>
-        <PageContainer>
-          <SideBar />
-          <BodyContainer className="abc">
-            <Router className="router">
-              {pageList.map((page) => {
-                return React.cloneElement(page.comp, {
-                  key: page.text,
-                  path: page.path,
-                });
-              })}
-            </Router>
-          </BodyContainer>
-        </PageContainer>
+        <BrowserRouter>
+          <PageContainer>
+              <DesktopSearchPage />
+          <Switch>
+            <Route exact path="/">
+              <NoSelectionIndicator />
+            </Route>
+            <Route path={`/:itemId`}>
+              <SearchEnginePage />
+            </Route>
+          </Switch>
+          </PageContainer>
+        </BrowserRouter>
       </Desktop>
       <Mobile>
         <BrowserRouter>

@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import styled from 'styled-components';
-import List from './List';
+// import List from './List';
 import Content from './Content';
 
 const Container = styled.div`
@@ -10,21 +12,21 @@ const Container = styled.div`
 `;
 
 const SearchEnginePage = () => {
-  const [selectedId, setSelectedId] = useState();
   const [selectedItem, setSelectedItem] = useState(null);
   const [loadDetail, setLoadDetail] = useState(false);
+  const { itemId } = useParams();
 
   useEffect(() => {
-    if (selectedId) {
+    if (itemId) {
       const getDetail = async () => {
         try {
           setLoadDetail(true);
           const response = await fetch(
-            'http://172.30.1.213:3600/api/v1/tasks/M04/' + selectedId,
+            'http://172.30.1.213:3600/api/v1/tasks/M04/' + itemId,
             { method: 'GET' }
           );
           if (!response.ok) {
-            throw new Error('Failed to fetch detail of task ' + selectedId);
+            throw new Error('Failed to fetch detail of task ' + itemId);
           }
           const result = await response.json();
           setSelectedItem(result);
@@ -36,13 +38,9 @@ const SearchEnginePage = () => {
       };
       getDetail();
     }
-  }, [selectedId]);
-  const handleSelectCard = (id) => {
-    setSelectedId(id);
-  }
+  }, [itemId]);
   return (
     <Container>
-      <List selectedId={selectedId} handleSelectCard={handleSelectCard} />
       <Content item={selectedItem} loading={loadDetail} />
     </Container>
   );
