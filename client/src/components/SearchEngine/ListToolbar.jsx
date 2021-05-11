@@ -43,7 +43,7 @@ const SearchAndFilter = styled.div`
   padding: 1rem 0 0.5rem;
   gap: 0.5rem;
 `;
-const ListToolbar = ({ isMobile, handleToggleSideBar }) => {
+const ListToolbar = ({ isMobile, handleToggleSideBar, showFilter, showSort }) => {
   const { searchContext } = Context.useContainer();
   const [filterPopup, setFilterPopup] = useState(false);
   const [sortPopup, setSortPopup] = useState(false);
@@ -71,14 +71,14 @@ const ListToolbar = ({ isMobile, handleToggleSideBar }) => {
         search={searchContext.search}
         setSearch={searchContext.setSearch}
       />
-      <IconWrapper ref={ref1}>
+      { showFilter && <IconWrapper ref={ref1}>
         <BsFunnel size="20px" onClick={(e) => handlePopup(e, "filter")} />
         {filterPopup && <PopupWrapper>Filter</PopupWrapper>}
-      </IconWrapper>
-      <IconWrapper ref={ref2}>
+      </IconWrapper> }
+      {showSort && <IconWrapper ref={ref2}>
         <BsFilterLeft size="20px" onClick={(e) => handlePopup(e, "sort")} />
         {sortPopup && <PopupWrapper>Sort</PopupWrapper>}
-      </IconWrapper>
+      </IconWrapper>}
     </SearchAndFilter>
   );
 };
