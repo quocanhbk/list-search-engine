@@ -12,7 +12,6 @@ import Carousel from './Carousel';
 import { useHistory } from 'react-router';
 
 const DisplayListWrapper = styled.div`
-  flex: 6;
   background-color: ${(props) => props.theme.color.background.primary};
   color: ${(props) => props.theme.color.text.primary};
   display: flex;
@@ -20,6 +19,7 @@ const DisplayListWrapper = styled.div`
   height: 100%;
   padding: 0 1rem;
   box-sizing: border-box;
+  max-width: 480px;
   min-width: 320px;
 `;
 
