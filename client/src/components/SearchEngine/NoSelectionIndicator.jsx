@@ -14,7 +14,8 @@ const Container = styled.div`
     }
     & .sub {
         color: ${props => props.theme.color.text.secondary};
-    }
+    };
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.32);
 `
 
 const NoSelectionIndicator = () => {
