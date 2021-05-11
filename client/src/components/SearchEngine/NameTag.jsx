@@ -5,7 +5,6 @@ import styled from 'styled-components'
 const StyledNameTag = styled.div`
     margin-top: 0.2rem;
     display: flex;
-    gap: 1rem;
     height: 2.5rem;
     & img {
         border-radius: 99px;
@@ -30,8 +29,6 @@ const Info = styled.div`
     }
 `
 const NameTag = ({name, email}) => {
-
-    
     return (
         <StyledNameTag>
                 <img src={`http://172.30.1.213:3600/api/v1/avatar/${email}`}/>

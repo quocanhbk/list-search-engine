@@ -64,9 +64,6 @@ const CardList = styled.div`
 `;
 
 const sampleProject = [
-  { label: 'M01', value: 'M01' },
-  { label: 'M02', value: 'M02' },
-  { label: 'M03', value: 'M03' },
   { label: 'M04', value: 'M04' },
 ];
 
