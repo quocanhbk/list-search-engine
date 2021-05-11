@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import baseURL from "../../utils/baseURL";
+import { useEffect, useState } from 'react';
+import baseURL from '../../utils/baseURL';
+import getToken from '../getToken';
 
 const useGetTaskDetail = (itemId, project) => {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -9,12 +10,19 @@ const useGetTaskDetail = (itemId, project) => {
       const getDetail = async () => {
         try {
           setLoadDetail(true);
+          const token = await getToken();
+          const options = {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${token.accessToken}`,
+            },
+          };
           const response = await fetch(
             `${baseURL}/api/v1/tasks/${project}/${itemId}`,
-            { method: "GET" }
+            options
           );
           if (!response.ok) {
-            throw new Error("Failed to fetch detail of task " + itemId);
+            throw new Error('Failed to fetch detail of task ' + itemId);
           }
           const result = await response.json();
           setSelectedItem(result);

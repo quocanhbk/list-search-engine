@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
+
 import baseURL from "../../utils/baseURL";
+import getToken from "../getToken";
 const useGetAllTasks = (project) => {
   const [loading, setLoading] = useState(true);
   const [tasks, setTasks] = useState([]);
   const getTasks = async () => {
     try {
       setLoading(true);
+      const token = await getToken();
       const options = {
         method: "GET",
+        headers: {
+          Authorization: `Bearer ${token.accessToken}`
+        }
       };
       const url = `${baseURL}/api/v1/tasks/${project}`;
       const response = await fetch(url, options);
