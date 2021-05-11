@@ -12,6 +12,7 @@ import Carousel from "./Carousel";
 import { useHistory } from "react-router";
 
 const DisplayListWrapper = styled.div`
+  flex: 1 1 480px;
   background-color: ${(props) => props.theme.color.background.primary};
   color: ${(props) => props.theme.color.text.primary};
   display: flex;
@@ -19,8 +20,7 @@ const DisplayListWrapper = styled.div`
   height: 100%;
   padding: 0 1rem;
   box-sizing: border-box;
-  max-width: 480px;
-  min-width: 320px;
+  min-width: ${(props => props.isMobile ? '320px' : '408px')};
 `;
 
 const TagBar = styled.div`
@@ -131,7 +131,7 @@ const DisplayList = ({
     );
   };
   return (
-    <DisplayListWrapper>
+    <DisplayListWrapper isMobile={isMobile}>
       <ListToolbar
         isMobile={isMobile}
         handleToggleSideBar={handleToggleSideBar}

@@ -10,7 +10,7 @@ import NameCard from "./NameCard";
 import NameTag from "./NameTag";
 import ListLoader from "./ListLoader";
 const DisplayContentWrapper = styled.div`
-  flex: 10;
+  flex: 1;
   background-color: ${(props) => props.theme.color.background.secondary};
   color: ${(props) => props.theme.color.text.primary};
   padding: 0.5rem;

@@ -25,7 +25,6 @@ const SidebarContainer = styled.div`
   background-color: ${(props) => props.theme.color.background.secondary};
   padding-top: 0.5rem;
   box-shadow: ${(props) => props.theme.shadow};
-  flex: 5;
   display: flex;
   flex-direction: column;
   max-width: 408px;
