@@ -83,12 +83,10 @@ const DisplayList = ({
   const { project, setProject } = projectContext;
   const handleSetProject = (pj) => {
     setProject(pj);
-    console.log(pj);
   };
 
   const { filter } = filterContext;
   let [loading, tasks] = useGetAllTasks(project);
-  console.log("Tasks:", tasks, "Loading: ", loading);
 
   const shapedData = tasks.map((item) => {
     let newCat = item.Category === null ? [] : item.Category;

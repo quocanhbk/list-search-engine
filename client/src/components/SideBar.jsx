@@ -138,7 +138,6 @@ const SideBar = ({ mobile, open, setSideBar = () => {} }) => {
   const [pathname, setPathname] = useState(location.pathname);
   const ref = useClickOutside(() => {
     setSideBar(false);
-    console.log("close");
   });
   const refMenu = useClickOutside(() => {
     setMenu(false);

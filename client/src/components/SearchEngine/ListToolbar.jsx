@@ -49,16 +49,13 @@ const ListToolbar = ({ isMobile, handleToggleSideBar }) => {
   const [sortPopup, setSortPopup] = useState(false);
   const ref1 = useClickOutside(() => {
     setFilterPopup(false);
-    console.log("1");
   });
   const ref2 = useClickOutside(() => {
     setSortPopup(false);
-    console.log("2");
   });
 
   const handlePopup = (e, type) => {
     e.preventDefault();
-    console.log("Boom");
     if (type === "filter") {
       setFilterPopup(!filterPopup);
     } else setSortPopup(!sortPopup);
