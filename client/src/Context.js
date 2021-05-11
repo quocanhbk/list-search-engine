@@ -49,26 +49,12 @@ const useProject = () => {
   return {project, setProject};
 }
 
-const useUser = () => {
-  const [user, setUser] = useState({
-    environment: '',
-    homeAccountId: '',
-    idTokenClaims: {},
-    localAccountId: '',
-    name: '',
-    tenantId: '',
-    username: ''
-  });
-  return { user, setUser};
-}
-
 const useContext = () => {
     let themeContext = useTheme();
     let searchContext = useSearch();
     let filterContext = useFilter();
-    let userContext = useUser();
     const projectContext = useProject();
-    return {themeContext, searchContext, filterContext, projectContext, userContext}
+    return {themeContext, searchContext, filterContext, projectContext}
 }
 
 const Context = createContainer(useContext)

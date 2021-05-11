@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useMsal } from '@azure/msal-react';
 import styled, { css } from 'styled-components';
 import { BsList, BsThreeDotsVertical } from 'react-icons/bs';
 import Avatar from './Avatar';
@@ -127,8 +128,9 @@ const SideBar = ({ mobile, open, setSideBar = () => {} }) => {
       name.lastIndexOf('-') !== -1 ? name.lastIndexOf('-') + 1 : 0,
       name.length
     );
-  const { themeContext, userContext } = Context.useContainer();
-  const { user } = userContext;
+  const { themeContext } = Context.useContainer();
+  const { accounts } = useMsal();
+  const user = accounts[0];
   const [pathname, setPathname] = useState(location.pathname);
   const ref = useClickOutside(() => {setSideBar(false);console.log("close")});
   // Render on open && desktop
