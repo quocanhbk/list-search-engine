@@ -7,6 +7,7 @@ import Tag from "../Tag";
 import Progress from "../Progress";
 import DueDate from "./DueDate";
 import Context from "../../Context";
+import baseURL from "../../utils/baseURL";
 
 const CardWrapper = styled.div`
   border: 1px solid ${(props) => props.theme.color.border.primary};
@@ -105,7 +106,7 @@ const Card = ({
       >
         <div>
           <Avatar
-            src={`http://172.30.1.213:3600/api/v1/avatar/${email}`}
+            src={`${baseURL}/api/v1/avatar/${email}`}
             width="40px"
             height="40px"
           />

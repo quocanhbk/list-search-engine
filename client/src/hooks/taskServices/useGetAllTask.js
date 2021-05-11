@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import baseURL from "../../utils/baseURL";
 const useGetAllTasks = (project) => {
   const [loading, setLoading] = useState(true);
   const [tasks, setTasks] = useState([]);
@@ -8,7 +9,7 @@ const useGetAllTasks = (project) => {
       const options = {
         method: "GET",
       };
-      const url = `http://172.30.1.213:3600/api/v1/tasks/${project}`;
+      const url = `${baseURL}/api/v1/tasks/${project}`;
       const response = await fetch(url, options);
       if (!response.ok) {
         throw new Error("Failed to fetch tasks from " + project);

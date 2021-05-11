@@ -14,6 +14,7 @@ import {
   IconWrapper,
   PopupWrapper,
 } from "../components/SearchEngine/ListToolbar";
+import baseURL from '../utils/baseURL';
 
 // Hard Coded the background-color, not gonna bother with this thing
 // C'mon man!
@@ -163,7 +164,7 @@ const SideBar = ({ mobile, open, setSideBar = () => {} }) => {
       </Header>
       <UserDisplayCard>
         <Avatar
-          src={`http://172.30.1.213:3600/api/v1/avatar/${user.username}`}
+          src={`${baseURL}/api/v1/avatar/${user.username}`}
         />
         <UserDisplayCardInfo>
           <h3>{shortenName(user.name)}</h3>

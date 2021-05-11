@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import styled from "styled-components";
+import baseURL from "../../utils/baseURL";
 
 const StyledNameTag = styled.div`
   margin-top: 0.2rem;
@@ -31,7 +32,7 @@ const Info = styled.div`
 const NameTag = ({ name, email }) => {
   return (
     <StyledNameTag>
-      <img src={`http://172.30.1.213:3600/api/v1/avatar/${email}`} />
+      <img src={`${baseURL}/api/v1/avatar/${email}`} />
       <Info>
         <h3>{name}</h3>
         <p>{email}</p>

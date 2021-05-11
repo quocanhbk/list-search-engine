@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import baseURL from "../../utils/baseURL";
 
 const useGetTaskDetail = (itemId, project) => {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -9,7 +10,7 @@ const useGetTaskDetail = (itemId, project) => {
         try {
           setLoadDetail(true);
           const response = await fetch(
-            `http://172.30.1.213:3600/api/v1/tasks/${project}/${itemId}`,
+            `${baseURL}/api/v1/tasks/${project}/${itemId}`,
             { method: "GET" }
           );
           if (!response.ok) {
