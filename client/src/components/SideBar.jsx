@@ -121,7 +121,14 @@ const Footer = styled.div`
   }
 `;
 const SideBar = ({ mobile, open, setSideBar = () => {} }) => {
-  const { themeContext } = Context.useContainer();
+  // Helper
+  const shortenName = (name) =>
+    name.slice(
+      name.lastIndexOf('-') !== -1 ? name.lastIndexOf('-') + 1 : 0,
+      name.length
+    );
+  const { themeContext, userContext } = Context.useContainer();
+  const { user } = userContext;
   const [pathname, setPathname] = useState(location.pathname);
   const ref = useClickOutside(() => {setSideBar(false);console.log("close")});
   // Render on open && desktop
@@ -138,11 +145,11 @@ const SideBar = ({ mobile, open, setSideBar = () => {} }) => {
       </Header>
       <UserDisplayCard>
         <Avatar
-          src={`http://172.30.1.213:3600/api/v1/avatar/son.nk@ttgvn.com`}
+          src={`http://172.30.1.213:3600/api/v1/avatar/${user.username}`}
         />
         <UserDisplayCardInfo>
-          <h3>La Quốc Anh</h3>
-          <p>anh.lq@ttgvn.com</p>
+          <h3>{shortenName(user.name)}</h3>
+          <p>{user.username}</p>
         </UserDisplayCardInfo>
         <BsThreeDotsVertical size="20px" />
       </UserDisplayCard>
