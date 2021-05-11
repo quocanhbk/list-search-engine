@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const useGetTaskDetail = (itemId, project) => {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -10,10 +10,10 @@ const useGetTaskDetail = (itemId, project) => {
           setLoadDetail(true);
           const response = await fetch(
             `http://172.30.1.213:3600/api/v1/tasks/${project}/${itemId}`,
-            { method: 'GET' }
+            { method: "GET" }
           );
           if (!response.ok) {
-            throw new Error('Failed to fetch detail of task ' + itemId);
+            throw new Error("Failed to fetch detail of task " + itemId);
           }
           const result = await response.json();
           setSelectedItem(result);
@@ -26,7 +26,7 @@ const useGetTaskDetail = (itemId, project) => {
       getDetail();
     }
   }, [itemId]);
-  return [selectedItem, loadDetail]  
-}
+  return [selectedItem, loadDetail];
+};
 
 export default useGetTaskDetail;

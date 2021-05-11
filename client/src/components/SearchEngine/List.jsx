@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import styled from 'styled-components';
-import Card from './Card';
-import Tag from '../Tag';
-import { getFader } from '../../utils/color';
-import Context from '../../Context';
-import useGetAllTasks from '../../hooks/taskServices/useGetAllTask';
-import ListLoader from './ListLoader';
-import ListToolbar from './ListToolbar';
-import Carousel from './Carousel';
-import { useHistory } from 'react-router';
+import React from "react";
+import styled from "styled-components";
+import Card from "./Card";
+import Tag from "../Tag";
+import { getFader } from "../../utils/color";
+import Context from "../../Context";
+import useGetAllTasks from "../../hooks/taskServices/useGetAllTask";
+import ListLoader from "./ListLoader";
+import ListToolbar from "./ListToolbar";
+import Carousel from "./Carousel";
+import { useHistory } from "react-router";
 
 const DisplayListWrapper = styled.div`
   background-color: ${(props) => props.theme.color.background.primary};
@@ -63,20 +63,24 @@ const CardList = styled.div`
   }
 `;
 
-const sampleProject = [
-  { label: 'M04', value: 'M04' },
-];
+const sampleProject = [{ label: "M04", value: "M04" }];
 
 const ListFooter = styled.div`
   font-size: 0.8rem;
   padding: 0.5rem 0;
   color: ${(props) => props.theme.color.text.secondary};
 `;
-const DisplayList = ({ selectedId, handleSelectCard, handleToggleSideBar, isMobile, }) => {
-  const { searchContext, filterContext, projectContext } = Context.useContainer();
+const DisplayList = ({
+  selectedId,
+  handleSelectCard,
+  handleToggleSideBar,
+  isMobile,
+}) => {
+  const { searchContext, filterContext, projectContext } =
+    Context.useContainer();
   const history = useHistory();
 
-  const {project, setProject} = projectContext;
+  const { project, setProject } = projectContext;
   const handleSetProject = (pj) => {
     setProject(pj);
     console.log(pj);
@@ -84,7 +88,7 @@ const DisplayList = ({ selectedId, handleSelectCard, handleToggleSideBar, isMobi
 
   const { filter } = filterContext;
   let [loading, tasks] = useGetAllTasks(project);
-  console.log('Tasks:', tasks, 'Loading: ', loading);
+  console.log("Tasks:", tasks, "Loading: ", loading);
 
   const shapedData = tasks.map((item) => {
     let newCat = item.Category === null ? [] : item.Category;
@@ -94,9 +98,9 @@ const DisplayList = ({ selectedId, handleSelectCard, handleToggleSideBar, isMobi
     return shapedData.filter((item) => {
       const itemString =
         item.AssignedTo.Title +
-        ' ' +
+        " " +
         item.AssignedTo.EMail +
-        ' ' +
+        " " +
         item.Title +
         item.Progress +
         item.Category +
@@ -125,12 +129,15 @@ const DisplayList = ({ selectedId, handleSelectCard, handleToggleSideBar, isMobi
   const displayDate = (dateString) => {
     let date = new Date(dateString);
     return (
-      date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
+      date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
     );
   };
   return (
     <DisplayListWrapper>
-      <ListToolbar isMobile={isMobile} handleToggleSideBar={handleToggleSideBar} />
+      <ListToolbar
+        isMobile={isMobile}
+        handleToggleSideBar={handleToggleSideBar}
+      />
       <Carousel
         selectedItem={project}
         onItemClick={handleSetProject}
@@ -141,14 +148,14 @@ const DisplayList = ({ selectedId, handleSelectCard, handleToggleSideBar, isMobi
         <TagContainer>
           {Object.entries(filter)
             .filter(([key, item]) =>
-              key === 'category' ? item.length > 0 : item !== null
+              key === "category" ? item.length > 0 : item !== null
             )
             .map(([key, value]) => {
               value =
-                key === 'dueDate'
+                key === "dueDate"
                   ? displayDate(value)
-                  : key === 'category'
-                  ? value.join(', ')
+                  : key === "category"
+                  ? value.join(", ")
                   : value;
               return (
                 <Tag
@@ -183,8 +190,8 @@ const DisplayList = ({ selectedId, handleSelectCard, handleToggleSideBar, isMobi
         )}
       </CardList>
       <ListFooter>
-        Total <b>{processData().length}</b>{' '}
-        {processData().length > 1 ? 'results' : 'result'}
+        Total <b>{processData().length}</b>{" "}
+        {processData().length > 1 ? "results" : "result"}
       </ListFooter>
     </DisplayListWrapper>
   );

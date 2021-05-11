@@ -1,13 +1,13 @@
-import React from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import React from "react";
+import styled, { ThemeProvider } from "styled-components";
 import {
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
-  useMsal
-} from '@azure/msal-react';
-import MainPage from './components/MainPage';
-import theme from './utils/theme';
-import Context from './Context';
+  useMsal,
+} from "@azure/msal-react";
+import MainPage from "./components/MainPage";
+import theme from "./utils/theme";
+import Context from "./Context";
 
 const StyledApp = styled.div`
   background: ${(props) => props.theme.color.background.primary};
@@ -34,7 +34,7 @@ function App() {
       <UnauthenticatedTemplate>
         <button onClick={() => instance.loginPopup()}>Login</button>
       </UnauthenticatedTemplate>
-      {inProgress === 'handleRedirect' && <div>LOADING</div>}
+      {inProgress === "handleRedirect" && <div>LOADING</div>}
       <AuthenticatedTemplate>
         <Context.Provider>
           <Container />

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Divider = styled.div`
   width: 100%;
@@ -7,6 +7,6 @@ const Divider = styled.div`
   box-sizing: border-box;
   margin-top: 4px;
   margin-bottom: 4px;
-`
+`;
 
-export default Divider
+export default Divider;

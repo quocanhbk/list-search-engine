@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
-import SideBar from './SideBar';
-import styled from 'styled-components';
-import List from './SearchEngine/List';
-import { BrowserRouter, Route, Switch, useParams } from 'react-router-dom';
-import DetailTaskMobile from './DetailTaskMobile';
-import SearchEnginePage from './SearchEngine';
-import NoSelectionIndicator from './SearchEngine/NoSelectionIndicator';
+import React, { useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import SideBar from "./SideBar";
+import styled from "styled-components";
+import List from "./SearchEngine/List";
+import { BrowserRouter, Route, Switch, useParams } from "react-router-dom";
+import DetailTaskMobile from "./DetailTaskMobile";
+import SearchEnginePage from "./SearchEngine";
+import NoSelectionIndicator from "./SearchEngine/NoSelectionIndicator";
 const PageContainer = styled.div`
   display: flex;
   height: 100%;
@@ -46,19 +46,16 @@ const MobileSearchPage = () => {
 
 const DesktopSearchPage = () => {
   const handleSelectionCardDesktop = (id, history, project) => {
-    history.push(`/${id}?project=${project}`)
-  }
+    history.push(`/${id}?project=${project}`);
+  };
   const { itemId } = useParams();
   return (
     <>
       <SideBar />
-      <List
-        selectedId={itemId}
-        handleSelectCard={handleSelectionCardDesktop}
-      />
+      <List selectedId={itemId} handleSelectCard={handleSelectionCardDesktop} />
     </>
   );
-}
+};
 
 // Cant fucking scroll with the shitass reach-router lib, have to use react router dom;
 const MainPage = () => {
@@ -67,15 +64,15 @@ const MainPage = () => {
       <Desktop>
         <BrowserRouter>
           <PageContainer>
-              <DesktopSearchPage />
-          <Switch>
-            <Route exact path="/">
-              <NoSelectionIndicator />
-            </Route>
-            <Route path={`/:itemId`}>
-              <SearchEnginePage />
-            </Route>
-          </Switch>
+            <DesktopSearchPage />
+            <Switch>
+              <Route exact path="/">
+                <NoSelectionIndicator />
+              </Route>
+              <Route path={`/:itemId`}>
+                <SearchEnginePage />
+              </Route>
+            </Switch>
           </PageContainer>
         </BrowserRouter>
       </Desktop>

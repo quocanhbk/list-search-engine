@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { useMsal } from '@azure/msal-react';
-import styled, { css } from 'styled-components';
-import { BsList, BsThreeDotsVertical } from 'react-icons/bs';
-import Avatar from './Avatar';
-import Context from '../Context';
-import ThemeToggle from './ThemeToggle';
-import pageList from '../pageList';
-import { navigate } from '@reach/router';
-import { getFader } from '../utils/color';
-import useClickOutside from '../hooks/useClickOutside';
-import { IconWrapper, PopupWrapper } from '../components/SearchEngine/ListToolbar';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { useMsal } from "@azure/msal-react";
+import styled, { css } from "styled-components";
+import { BsList, BsThreeDotsVertical } from "react-icons/bs";
+import Avatar from "./Avatar";
+import Context from "../Context";
+import ThemeToggle from "./ThemeToggle";
+import pageList from "../pageList";
+import { navigate } from "@reach/router";
+import { getFader } from "../utils/color";
+import useClickOutside from "../hooks/useClickOutside";
+import {
+  IconWrapper,
+  PopupWrapper,
+} from "../components/SearchEngine/ListToolbar";
 
 // Hard Coded the background-color, not gonna bother with this thing
 // C'mon man!
 const SidebarContainer = styled.div`
-  position: ${(props) => (props.mobile ? 'absolute' : 'static')};
+  position: ${(props) => (props.mobile ? "absolute" : "static")};
   height: 100%;
   z-index: 1300;
   background-color: ${(props) => props.theme.color.background.secondary};
@@ -125,24 +128,36 @@ const SideBar = ({ mobile, open, setSideBar = () => {} }) => {
   // Helper
   const shortenName = (name) =>
     name.slice(
-      name.lastIndexOf('-') !== -1 ? name.lastIndexOf('-') + 1 : 0,
+      name.lastIndexOf("-") !== -1 ? name.lastIndexOf("-") + 1 : 0,
       name.length
     );
   const { themeContext } = Context.useContainer();
-  const [openMenu, setMenu ] = useState(false);
+  const [openMenu, setMenu] = useState(false);
   const { accounts, instance } = useMsal();
   const user = accounts[0];
   const [pathname, setPathname] = useState(location.pathname);
-  const ref = useClickOutside(() => {setSideBar(false);console.log("close")});
-  const refMenu = useClickOutside(() => {setMenu(false);})
+  const ref = useClickOutside(() => {
+    setSideBar(false);
+    console.log("close");
+  });
+  const refMenu = useClickOutside(() => {
+    setMenu(false);
+  });
   // Render on open && desktop
   return open || !mobile ? (
     <SidebarContainer ref={ref} mobile={mobile}>
-      {mobile && <IconWrapper onClick={() => setSideBar(false)} style={{justifyContent: 'flex-start', width: '40px'}}><BsList size={24}/></IconWrapper>}
+      {mobile && (
+        <IconWrapper
+          onClick={() => setSideBar(false)}
+          style={{ justifyContent: "flex-start", width: "40px" }}
+        >
+          <BsList size={24} />
+        </IconWrapper>
+      )}
       <Header>
         <Logo
           src={
-            themeContext.isDark ? '/iconNoTextDark.svg' : '/iconNoTextLight.svg'
+            themeContext.isDark ? "/iconNoTextDark.svg" : "/iconNoTextLight.svg"
           }
         />
         <h1>Project Management</h1>
@@ -157,7 +172,11 @@ const SideBar = ({ mobile, open, setSideBar = () => {} }) => {
         </UserDisplayCardInfo>
         <IconWrapper ref={refMenu} onClick={() => setMenu(!openMenu)}>
           <BsThreeDotsVertical size="20px" />
-          {openMenu && <PopupWrapper><div onClick={() => instance.logout()}>Logout</div></PopupWrapper>}
+          {openMenu && (
+            <PopupWrapper>
+              <div onClick={() => instance.logout()}>Logout</div>
+            </PopupWrapper>
+          )}
         </IconWrapper>
       </UserDisplayCard>
       <NavList>
@@ -191,7 +210,7 @@ const SideBar = ({ mobile, open, setSideBar = () => {} }) => {
 SideBar.propTypes = {
   mobile: PropTypes.bool,
   open: PropTypes.bool,
-  setSideBar: PropTypes.any
+  setSideBar: PropTypes.any,
 };
 
 export default SideBar;

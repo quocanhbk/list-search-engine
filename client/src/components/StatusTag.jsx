@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import PropTypes from "prop-types";
+import styled from "styled-components";
 
 const StatusTag = styled.div`
   display: flex;
@@ -11,11 +11,14 @@ const StatusTag = styled.div`
   border-radius: 12px;
   font-size: 12px;
   color: #ffffff;
-  background-color: ${(props) => props.backgroundColor ? props.theme.color.fill[props.backgroundColor] : props.theme.color.fill.info};
+  background-color: ${(props) =>
+    props.backgroundColor
+      ? props.theme.color.fill[props.backgroundColor]
+      : props.theme.color.fill.info};
 `;
 
 StatusTag.propTypes = {
   backgroundColor: PropTypes.string,
-}
+};
 
 export default StatusTag;

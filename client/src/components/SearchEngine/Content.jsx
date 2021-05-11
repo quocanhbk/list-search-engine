@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import styled from 'styled-components';
-import { getFader } from '../../utils/color';
-import Progress from '../Progress';
-import NoSelectionIndicator from './NoSelectionIndicator';
-import InfoContainer from './InfoContainer';
-import Tag from '../Tag';
-import NameCard from './NameCard';
-import NameTag from './NameTag';
-import ListLoader from './ListLoader';
+import React from "react";
+import styled from "styled-components";
+import { getFader } from "../../utils/color";
+import Progress from "../Progress";
+import NoSelectionIndicator from "./NoSelectionIndicator";
+import InfoContainer from "./InfoContainer";
+import Tag from "../Tag";
+import NameCard from "./NameCard";
+import NameTag from "./NameTag";
+import ListLoader from "./ListLoader";
 const DisplayContentWrapper = styled.div`
   flex: 10;
   background-color: ${(props) => props.theme.color.background.secondary};
@@ -71,10 +71,10 @@ const HorizontalLine = styled.div`
 
 const DisplayContent = ({ item, loading }) => {
   const dateToString = (date) =>
-    date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+    date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
   const shortenName = (name) =>
     name.slice(
-      name.lastIndexOf('-') !== -1 ? name.lastIndexOf('-') + 1 : 0,
+      name.lastIndexOf("-") !== -1 ? name.lastIndexOf("-") + 1 : 0,
       name.length
     );
   return (

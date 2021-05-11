@@ -3,7 +3,7 @@ export const getDarker = (hex, shade = 20) => {
   const arr = [hex.slice(1, 3), hex.slice(3, 5), hex.slice(5, 7)];
   const clr = [0, 0, 0];
   arr.forEach((x, y) => {
-    for (let i = 0; i < 2; i+=1) {
+    for (let i = 0; i < 2; i += 1) {
       const v =
         x[i] === "A"
           ? 10
