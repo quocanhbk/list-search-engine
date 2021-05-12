@@ -5,6 +5,8 @@ import {
   UnauthenticatedTemplate,
   useMsal,
 } from "@azure/msal-react";
+import { ToastContainer, Flip } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import MainPage from "./components/MainPage";
 import theme from "./utils/theme";
 import Context from "./Context";
@@ -24,6 +26,11 @@ const Container = () => {
     <ThemeProvider theme={themeContext.isDark ? theme.dark : theme.light}>
       <StyledApp>
         <MainPage />
+        <ToastContainer
+          autoClose={3000}
+          pauseOnFocusLoss={false}
+          transition={Flip}
+        />
       </StyledApp>
     </ThemeProvider>
   );

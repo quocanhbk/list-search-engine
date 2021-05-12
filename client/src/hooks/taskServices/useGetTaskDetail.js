@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import baseURL from '../../utils/baseURL';
 import getToken from '../getToken';
 
@@ -22,12 +23,15 @@ const useGetTaskDetail = (itemId, project) => {
             options
           );
           if (!response.ok) {
-            throw new Error('Failed to fetch detail of task ' + itemId);
+            const message = 'Failed to fetch detail of task ' + itemId;
+            toast.error(message);
+            throw new Error(message);
           }
           const result = await response.json();
           setSelectedItem(result);
         } catch (err) {
           console.error(err);
+          toast.error(err.message);
         } finally {
           setLoadDetail(false);
         }
