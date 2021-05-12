@@ -8,6 +8,7 @@ import {
 import MainPage from "./components/MainPage";
 import theme from "./utils/theme";
 import Context from "./Context";
+import Login from "./components/Login";
 
 const StyledApp = styled.div`
   background: ${(props) => props.theme.color.background.primary};
@@ -32,7 +33,7 @@ function App() {
   return (
     <>
       <UnauthenticatedTemplate>
-        <button onClick={() => instance.loginPopup()}>Login</button>
+        <Login instance={instance}/>
       </UnauthenticatedTemplate>
       {inProgress === "handleRedirect" && <div>LOADING</div>}
       <AuthenticatedTemplate>
