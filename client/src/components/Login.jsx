@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Logo from '../assets/TT_Logo.png';
+import { useMsalAuthentication } from '@azure/msal-react';
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -32,6 +33,7 @@ const LoginButton = styled.button`
 `
 
 const Login = ({instance}) => {
+  useMsalAuthentication('redirect');
   return(
     <LoginWrapper>
       <Background src={Logo} />
