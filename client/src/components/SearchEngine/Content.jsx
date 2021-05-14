@@ -67,6 +67,9 @@ const ParRow = styled.div`
 const HorizontalLine = styled.div`
   display: flex;
   justify-content: space-between;
+  & >div {
+    flex-basis: 50%;
+  }
 `;
 
 const DisplayContent = ({ item, loading }) => {
